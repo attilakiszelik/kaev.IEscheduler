@@ -1,4 +1,4 @@
-package com.example.IEscheduler;
+package com.example.IEscheduler.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
