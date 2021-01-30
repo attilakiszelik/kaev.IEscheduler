@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -13,6 +13,41 @@
 <body>
 
 <img src="images/logo.jpg"/>
+<br>
+
+<div class="container">
+
+	<nav class="navbar navbar-default">
+	
+	</nav>
+	
+	<article th:each=" vehicle : ${vehicles} " >
+	
+		<header>
+		
+			<p th:text="${vehicle.name}">Gépjármű</p>
+		
+		</header>
+		
+		<section>
+		
+			<p>id: </p><p th:text="${vehicle.id}"></p>
+			<p>forgalmi rendszám: </p><p th:text="${vehicle.regnum}"></p>
+			<p>gyártó: </p><p th:text="${vehicle.man}"></p>
+			<p>típus: </p><p th:text="${vehicle.type}"></p>
+			<p>gyártás éve: </p><p h:text="${vehicle.yod}"></p>
+		
+		</section>
+	
+		<hr/>
+	
+	</article>
+
+	<footer>
+		<p>Az az Inter-Épfu Kft. szervíz időpontfoglaló rendszerének ügyfél jármű-nyilvántartó modulja</p>
+	</footer>
+
+</div>
 
 </body>
 
