@@ -3,11 +3,11 @@ package com.example.IEscheduler.domain;
 public class Vehicle {
 	
 	private int id;
-	private String name;
 	private String regnum; //registration number
 	private String man; //manufacturer
 	private String type;
-	private String yop; //year of production
+	private int yop; //year of production
+	private boolean deleted;
 	
 	//constructor
 	public Vehicle() {
@@ -21,14 +21,6 @@ public class Vehicle {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getRegnum() {
@@ -55,19 +47,30 @@ public class Vehicle {
 		this.type = type;
 	}
 
-	public String getYop() {
+	public int getYop() {
 		return yop;
 	}
 
-	public void setYop(String yop) {
+	public void setYop(int yop) {
 		this.yop = yop;
+	}
+	
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	//toString
 	@Override
 	public String toString() {
-		return "Vehicles [id=" + id + ", name=" + name + ", regnum=" + regnum + ", man=" + man + ", type=" + type + ", yop=" + yop + "]";
+		return "Vehicle [id=" + id + ", regnum=" + regnum + ", man=" + man + ", type=" + type + ", yop=" + yop
+				+ ", deleted=" + deleted + "]";
 	}
+
+
 	
 
 }

@@ -32,19 +32,19 @@ public class MyController {
 		
 		Vehicle vehicle1 = new Vehicle();
 		vehicle1.setId(1);
-		vehicle1.setName("Jármű 1");
 		vehicle1.setRegnum("ABC-000");
 		vehicle1.setMan("MAN");
 		vehicle1.setType("régi típus");
-		vehicle1.setYop("1960");
+		vehicle1.setYop(1960);
+		vehicle1.setDeleted(false);
 		
 		Vehicle vehicle2 = new Vehicle();
 		vehicle2.setId(2);
-		vehicle2.setName("Jármű 2");
 		vehicle2.setRegnum("ABC-123");
 		vehicle2.setMan("MAN");
 		vehicle2.setType("új típus");
-		vehicle2.setYop("1980");
+		vehicle2.setYop(1980);
+		vehicle2.setDeleted(false);
 		
 		vehicles.add(vehicle1);
 		vehicles.add(vehicle2);
