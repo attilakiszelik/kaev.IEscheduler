@@ -28,58 +28,36 @@
 	</div>
 </nav>
 
-<div class="container-fluid">
-	<div class="row welcome text-center">
-		<div class="col-12">
-			<h1 class="display-4"><b>Járművek</b></h1>
-		</div>
-		<hr>
-	</div>
-</div>
+<div class="container">
+
+	<h1>Ajajj, valami hiba történt...</h1>
+	<img src="https://media.giphy.com/media/H6c3xjdHEQzqGDj5dd/giphy.gif" alt="error"  width=250/>
+	
+</div>	
 	
 <div class="container">	
 
-	<table class="table table-striped table-hover">
+	<article>
 	
-		<thead>
-			<tr>
-				<div style="text-align:right">
-					<button  onclick="greetings()" type="button" class="btn btn-primary btn-med"><i class="fas fa-plus"> új jármű</i></button>
-				</div>
-			</tr>
-			<tr>
-		      <th style="width:17.5%" scope="col">forgalmi rendszám</th>
-		      <th style="width:17.5%" scope="col">gyártó</th>
-		      <th style="width:17.5%" scope="col">típus</th>
-		      <th style="width:17.5%" scope="col">gyártás éve</th>
-		      <th style="width:30%" scope="col">művelet</th>
-			</tr>
-		</thead>
-		
-		<tbody>
-		    <tr th:each="vehicle : ${vehicles}">
-  	     	  <td th:text="${vehicle.regnum}"></td>
-		      <td th:text="${vehicle.man}"></td>
-		      <td th:text="${vehicle.type}"></td>
-		      <td th:text="${vehicle.yop}"></td>
-		      <td><div class="button-group">
-		      	  <button type="button" class="btn btn-info"><i class="fas fa-pencil-alt"> módosítás</i></button>
-		      	  <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"> törlés</i></button>
-		      	  </div>
-		      </td>
-		    </tr>
-		</tbody>
+		<header>
+			<p th:text="${error}">Ez itt a hiba</p>
+		</header>
 	
-	</table>
+		<section>
+			<p th:text="${message}">Ez itt az üzenet</p>
+			<p th:text="${path}">Ez itt az üzenet</p>
+			<p th:text="${timestamp}">Ez itt az üzenet</p>
+			<p th:text="${status}">Ez itt az üzenet</p>
+		</section>
+	
+	</article>
 	
 </div>	
 
 	<!-- JavaScript and JavaScript bundle // https://www.bootstrapcdn.com/ -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
-	
-	<script type="text/javascript" src="js/functions.js"></script>
-	
+
 </body>
 
 </html>
