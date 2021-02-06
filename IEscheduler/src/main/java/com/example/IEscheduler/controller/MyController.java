@@ -5,6 +5,9 @@ package com.example.IEscheduler.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.example.IEscheduler.domain.Vehicle;
 import java.util.ArrayList;
 
@@ -23,6 +26,18 @@ public class MyController {
 	
 		model.addAttribute("vehicles", getVehicles());
 		return "vehicles";
+	
+	}
+	
+	//kivételkezelés
+	@RequestMapping("/user/{id}")
+	public String searchUserById(@PathVariable(value="id") String id ) throws Exception{
+
+		//pl. nem adpott meg felhasználót
+		if(id==null) {
+			throw new Exception("Nem adott meg falhaználót!");
+		}
+		return "user";
 	
 	}
 	
