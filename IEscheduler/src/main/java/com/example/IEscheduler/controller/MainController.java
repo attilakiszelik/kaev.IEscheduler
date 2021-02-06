@@ -7,12 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.example.IEscheduler.domain.Vehicle;
 import java.util.ArrayList;
 
 @Controller
-public class MyController {
+public class MainController {
 	
 //	private MyService myService;
 
@@ -44,7 +43,7 @@ public class MyController {
 	private ArrayList<Vehicle> getVehicles(){
 		
 		ArrayList<Vehicle> vehicles = new ArrayList<>();
-		
+/*
 		Vehicle vehicle1 = new Vehicle();
 		vehicle1.setId(1);
 		vehicle1.setRegnum("ABC-000");
@@ -63,7 +62,7 @@ public class MyController {
 		
 		vehicles.add(vehicle1);
 		vehicles.add(vehicle2);
-		
+*/		
 		return vehicles;
 		
 	}

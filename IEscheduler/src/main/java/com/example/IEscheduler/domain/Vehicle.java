@@ -1,25 +1,35 @@
 package com.example.IEscheduler.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Vehicle {
 	
-	private int id;
+	@GeneratedValue
+	@Id
+	private long id;
 	private String regnum; //registration number
 	private String man; //manufacturer
-	private String type;
+	private String type; //type
 	private int yop; //year of production
+	@ManyToOne
+	private User owner;
 	private boolean deleted;
 	
 	//constructor
-	public Vehicle() {
+	private Vehicle() {
 
 	}
 
 	//getters-setters
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -55,6 +65,14 @@ public class Vehicle {
 		this.yop = yop;
 	}
 	
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+	
 	public boolean isDeleted() {
 		return deleted;
 	}
@@ -67,10 +85,7 @@ public class Vehicle {
 	@Override
 	public String toString() {
 		return "Vehicle [id=" + id + ", regnum=" + regnum + ", man=" + man + ", type=" + type + ", yop=" + yop
-				+ ", deleted=" + deleted + "]";
+				+ ", owner=" + owner + ", deleted=" + deleted + "]";
 	}
-
-
-	
 
 }
