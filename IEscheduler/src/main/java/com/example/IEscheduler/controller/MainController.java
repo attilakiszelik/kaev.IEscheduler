@@ -17,7 +17,6 @@ public class MainController {
 	public void setMyService(MainService mainService) {
 		this.mainService = mainService;
 	}
-	
 
 	@GetMapping("/")
 	public String vehicles(Model model){
