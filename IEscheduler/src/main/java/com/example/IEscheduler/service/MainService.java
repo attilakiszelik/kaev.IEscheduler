@@ -6,18 +6,25 @@ import org.springframework.stereotype.Service;
 
 import com.example.IEscheduler.domain.User;
 import com.example.IEscheduler.domain.Vehicle;
+import com.example.IEscheduler.repository.UserRepository;
 import com.example.IEscheduler.repository.VehicleRepository;
 
 @Service
 public class MainService {
 	
 	private VehicleRepository vehicleRepo;
+	private UserRepository userRepo;
 
 	@Autowired
 	public void setVehicleRepo(VehicleRepository vehicleRepo) {
 		this.vehicleRepo = vehicleRepo;
 	}
 	
+	@Autowired
+	public void setUserRepo(UserRepository userRepo) {
+		this.userRepo = userRepo;
+	}
+
 	public List<Vehicle> getVehicles(){
 		return vehicleRepo.findAll();
 	}
