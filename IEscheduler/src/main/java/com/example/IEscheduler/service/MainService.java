@@ -25,15 +25,16 @@ public class MainService {
 	}
 
 	public List<Vehicle> getVehicles(){
-		newVehicle("ZZZ-111", "IVECO", "nagy", 2020, 1, false);
+		
 		return vehicleRepo.findAll();
+		
 	}
 	
-	public void newVehicle(String regnum, String man, String type, int yop, long userid, boolean deleted) {
+	public void newVehicle(boolean deleted, String regnum, String man, String type, int yop, long userid) {
 		
 		User owner =  userRepo.findById(userid);
 				
-		Vehicle vehicle = new Vehicle(regnum, man, type, yop, owner, deleted);
+		Vehicle vehicle = new Vehicle(deleted, regnum, man, type, yop, owner);
 		vehicleRepo.save(vehicle);
 		
 	}

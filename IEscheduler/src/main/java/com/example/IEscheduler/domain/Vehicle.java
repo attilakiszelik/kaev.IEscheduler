@@ -2,23 +2,24 @@ package com.example.IEscheduler.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity(name="Vehicles")
 public class Vehicle {
 	
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private long id;
+	private boolean deleted;
 	private String regnum; //registration number
 	private String man; //manufacturer
 	private String type; //type
 	private int yop; //year of production
 	@ManyToOne
 	private User owner;
-	private boolean deleted;
-	
+
 	//constructors
 	  //private constructor to read from db
 	private Vehicle() {
@@ -26,13 +27,13 @@ public class Vehicle {
 	}
 	
 	//public constructor (without id!) to write into db
-	public Vehicle(String regnum, String man, String type, int yop, User owner, boolean deleted) {
+	public Vehicle(boolean deleted, String regnum, String man, String type, int yop, User owner) {
+		this.deleted = deleted;
 		this.regnum = regnum;
 		this.man = man;
 		this.type = type;
 		this.yop = yop;
 		this.owner = owner;
-		this.deleted = deleted;
 	}
 
 	//getters-setters
@@ -42,6 +43,14 @@ public class Vehicle {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public String getRegnum() {
@@ -83,20 +92,12 @@ public class Vehicle {
 	public void setOwner(User owner) {
 		this.owner = owner;
 	}
-	
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
 
 	//toString
 	@Override
 	public String toString() {
-		return "Vehicle [id=" + id + ", regnum=" + regnum + ", man=" + man + ", type=" + type + ", yop=" + yop
-				+ ", owner=" + owner + ", deleted=" + deleted + "]";
+		return "Vehicle [id=" + id + ", deleted=" + deleted + ", regnum=" + regnum + ", man=" + man + ", type=" + type + ", yop=" + yop
+				+ ", owner=" + owner + "]";
 	}
 
 }
