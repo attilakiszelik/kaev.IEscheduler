@@ -16,9 +16,16 @@ public class User {
 	@OneToMany (mappedBy = "owner")
 	private List<Vehicle> vehicles;
 
-	//constructor
+	//constructors
+	  //private constructor to read from db
 	private User() {
 	
+	}
+	
+	  //public constructor (without id!) to write into db
+	public User(String name, List<Vehicle> vehicles) {
+		this.name = name;
+		this.vehicles = vehicles;
 	}
 
 	//getters and setters

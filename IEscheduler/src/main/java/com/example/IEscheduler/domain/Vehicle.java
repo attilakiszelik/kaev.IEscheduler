@@ -19,9 +19,20 @@ public class Vehicle {
 	private User owner;
 	private boolean deleted;
 	
-	//constructor
+	//constructors
+	  //private constructor to read from db
 	private Vehicle() {
 
+	}
+	
+	//public constructor (without id!) to write into db
+	public Vehicle(String regnum, String man, String type, int yop, User owner, boolean deleted) {
+		this.regnum = regnum;
+		this.man = man;
+		this.type = type;
+		this.yop = yop;
+		this.owner = owner;
+		this.deleted = deleted;
 	}
 
 	//getters-setters
