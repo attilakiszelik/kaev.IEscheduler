@@ -6,6 +6,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
+	<!--  tesztelés miatt -->
+	<meta http-equiv="Content-Type" content="text/html">
+	
 	<title>Inter-Épfu szervíz időpontfoglalás</title>
 
 	<!-- CSS // https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
@@ -55,7 +58,7 @@
 
 		<div class="d-grid">
 			<button class="btn btn-secondary" href="#addNewVehicle" data-bs-toggle="collapse" aria-expanded="false" aria-controls="addNewVehicle">
-				<span class="fas fa-plus !important"> új jármű</span>
+				<span class="fas fa-plus !important">  új jármű</span>
 			</button>
 		</div>
 
@@ -66,16 +69,27 @@
 			</div>
 
 			<div class="card-body">
-				<div class="input-group mb-3">
+				
+				<form action="#" th:action="@{/new}" th:object="${vehicle}" method="post">
+						
+						<p>Forgalmi rendszám: <input type="text" th:field="*{regnum}"/></p>
+						<p>Gyártó: <input type="text" th:field="*{man}"/></p>
+						<p>Típus: <input type="text" th:field="*{type}"/></p>
+						<p>Gyártás éve: <input type="text" th:field="*{yop}"/></p>
+						
+						<!--
+						
+						class="input-group mb-3" 
+						
 						<span class="input-group-text" id="inp1">forgalmi rendszám:</span>
-						<input type="text" id="regnum" placeholder="ABC-123" class="form-control" aria-describedby="inp1" required> <!--pattern="[A-Z]{3}+[0-9]{3}"-->
+						<input type="text" id="regnum" th:field="*{regnum}" placeholder="ABC-123" class="form-control" aria-describedby="inp1" required/>
 						<span class="input-group-text" id="inp2">gyártó:</span>
-						<select class="form-select" id="man" aria-describedby="inp2" required> 
+						<select class="form-select" id="man" th:field="*{man}" aria-describedby="inp2" required> 
 							<option selected></option>
 							<option value="1">M.A.N.</option>
 						</select>
 						<span class="input-group-text" id="inp3">típus:</span>
-						<select class="form-select" id="type" aria-describedby="inp3" required> 
+						<select class="form-select" id="type" th:field="*{type}" aria-describedby="inp3" required> 
 							<option selected></option>
 							<option value="1">TGS</option>
 							<option value="2">TGM</option>
@@ -84,12 +98,18 @@
 							<option value="5">eTGX</option>
 						</select>
 						<span class="input-group-text" id="inp4">gyártás éve:</span>
-						<input type="text" id="yop" class="form-control" aria-describedby="inp4" required>
-				</div>
+						<input type="text" id="yop" th:field="*{yop}" class="form-control" aria-describedby="inp4" required/>
+						
+						-->
+						
+					<div class="savebutton">
+						<button onclick="greetings()" class="btn btn-primary btn-med"><i class="fas fa-save !important"> mentés</i></button>
+						<input type="submit" value="adatbázisba mentés" class="btn btn-primary btn-med"/>
+					</div>
+						
+				</form>
 
-				<div class="savebutton">
-						<button  onclick="greetings()" class="btn btn-primary btn-med"><i class="fas fa-save !important"> mentés</i></button>
-				</div>
+
 
 			</div>
 
