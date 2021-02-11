@@ -24,6 +24,7 @@ public class MainController {
 	@GetMapping("/")
 	public String vehicles(Model model){
 		model.addAttribute("vehicles", mainService.getVehicles());
+		model.addAttribute("vehicle",new Vehicle());
 		return "vehicles";
 	}
 	
@@ -31,12 +32,14 @@ public class MainController {
 	public String newVehicle(Model model){
 		mainService.newVehicle(false, "ZZZ-111", "IVECO", "nagy", 2020, 1);
 		model.addAttribute("vehicles", mainService.getVehicles());
+		model.addAttribute("vehicle", new Vehicle());
 		return "vehicles";
 	}
 	
 	@PostMapping("/new")
 	public String greetingSubmit(@ModelAttribute Vehicle vehicle, Model model) {
-		model.addAttribute("vehicles", vehicle);
+		model.addAttribute("vehicles", mainService.getVehicles());
+		model.addAttribute("vehicle", vehicle);
 		return "vehicles";
 	}
 	

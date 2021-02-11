@@ -22,7 +22,7 @@ public class Vehicle {
 
 	//constructors
 	  //private constructor to read from db
-	private Vehicle() {
+	public Vehicle() {
 
 	}
 	
