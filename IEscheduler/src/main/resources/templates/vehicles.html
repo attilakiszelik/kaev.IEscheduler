@@ -8,80 +8,139 @@
 	
 	<title>Inter-Épfu szervíz időpontfoglalás</title>
 
-	<!-- CSS // https://www.bootstrapcdn.com/ -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<!-- CSS // https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
 	<!-- font awesome // https://fontawesome.com/ -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/v4-shims.css">
-			
-	<!-- bootswatch -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	
+	<!-- myStyleSheet -->
+	<link rel="stylesheet" href="css/myStyleSheet.css">
 	
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top"> 
-	<div class="container-fluid">
-		<a class="navbar-brand" href="#"><img src="images/logo.jpg"/></a>
+	<!--test media size-->
+	<div class="container-fluid mediasizetester">
+		<div class="d-block d-sm-none">XS</div>
+		<div class="d-none d-sm-block d-md-none">SM</div>
+		<div class="d-none d-md-block d-lg-none">MD</div>
+		<div class="d-none d-lg-block d-xl-none">LG</div>
+		<div class="d-none d-xl-block">XL</div>
 	</div>
-</nav>
-
-<div class="container-fluid">
-	<div class="row welcome text-center">
-		<div class="col-12">
-			<h1 class="display-4"><b>Járművek</b></h1>
-		</div>
-		<hr>
-	</div>
-</div>
 	
-<div class="container">	
-
-	<table class="table table-striped table-hover">
-	
-		<thead>
-			<tr>
-				<div style="text-align:right">
-					<button  onclick="greetings()" type="button" class="btn btn-primary btn-med"><i class="fas fa-plus"> új jármű</i></button>
-				</div>
-			</tr>
-			<tr>
-		      <th style="width:17.5%" scope="col">forgalmi rendszám</th>
-		      <th style="width:17.5%" scope="col">gyártó</th>
-		      <th style="width:17.5%" scope="col">típus</th>
-		      <th style="width:17.5%" scope="col">gyártás éve</th>
-		      <th style="width:30%" scope="col">művelet</th>
-			</tr>
-		</thead>
+	<nav class="navbar navbar-expand-md navbar-light shadow p-3 mb-5 bg-body rounded"> 
 		
-		<tbody>
-		    <tr th:each="vehicle : ${vehicles}">
-  	     	  <td th:text="${vehicle.regnum}"></td>
-		      <td th:text="${vehicle.man}"></td>
-		      <td th:text="${vehicle.type}"></td>
-		      <td th:text="${vehicle.yop}"></td>
-		      <td><div class="button-group">
-		      	  <button type="button" class="btn btn-info"><i class="fas fa-pencil-alt"> módosítás</i></button>
-		      	  <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"> törlés</i></button>
-		      	  </div>
-		      </td>
-		    </tr>
-		</tbody>
+		<a class="navbar-brand" href="#">
+			<img src="images/logo.jpg" alt="">
+		</a>
+
+		<button class="navbar-toggler" href="#navbarNav" data-bs-toggle="collapse" aria-expanded="false" aria-controls="navbarNav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="navbar-collapse collapse" id="navbarNav">
+			<div class="navbar-nav">
+				<a class="nav-link" href="#">Időpontfoglalás</a>
+				<a class="nav-link" href="#">Járművek</a>
+				<a class="nav-link" href="#">Profil</a>
+				<a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i></a>
+			</div>
+		</div>
+
+	</nav>
+		
+	<div class="container col-md-12 cont1">
+
+		<div class="d-grid">
+			<button class="btn btn-secondary" href="#addNewVehicle" data-bs-toggle="collapse" aria-expanded="false" aria-controls="addNewVehicle">
+				<span class="fas fa-plus !important"> új jármű</span>
+			</button>
+		</div>
+
+		<div class="collapse card" id="addNewVehicle">
+
+			<div class="card-header">
+				<h1>Jármű adatai</h1>
+			</div>
+
+			<div class="card-body">
+				<div class="input-group mb-3">
+						<span class="input-group-text" id="inp1">forgalmi rendszám:</span>
+						<input type="text" id="regnum" placeholder="ABC-123" class="form-control" aria-describedby="inp1" required> <!--pattern="[A-Z]{3}+[0-9]{3}"-->
+						<span class="input-group-text" id="inp2">gyártó:</span>
+						<select class="form-select" id="man" aria-describedby="inp2" required> 
+							<option selected></option>
+							<option value="1">M.A.N.</option>
+						</select>
+						<span class="input-group-text" id="inp3">típus:</span>
+						<select class="form-select" id="type" aria-describedby="inp3" required> 
+							<option selected></option>
+							<option value="1">TGS</option>
+							<option value="2">TGM</option>
+							<option value="3">TGL</option>
+							<option value="4">TGX</option>
+							<option value="5">eTGX</option>
+						</select>
+						<span class="input-group-text" id="inp4">gyártás éve:</span>
+						<input type="text" id="yop" class="form-control" aria-describedby="inp4" required>
+				</div>
+
+				<div class="savebutton">
+						<button  onclick="greetings()" class="btn btn-primary btn-med"><i class="fas fa-save !important"> mentés</i></button>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
 	
-	</table>
+	<div class="container col-md-12 cont2">
+		<row>
+			<table class="table table-striped table-hover table-bordered">
 	
-</div>
+				<thead>
+					<tr>
+						<title>Járművek</title>
+					</tr>
+					<tr class="d-flex">
+						<th class="col-3">forgalmi rendszám</th>
+						<th class="col-2">gyártó</th>
+						<th class="col-2">típus</th>
+						<th class="col-2">gyártás éve</th>
+						<th class="col-3">művelet</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr class="d-flex" th:each="vehicle : ${vehicles}">
+						<td class="col-3" th:text="${vehicle.regnum}"></td>
+						<td class="col-2" th:text="${vehicle.man}"></td>
+						<td class="col-2" th:text="${vehicle.type}"></td>
+						<td class="col-2" th:text="${vehicle.yop}"></td>
+						<td class="col-3">
+							<div class="button-group">
+								<button type="button" class="btn btn-info"><i class="fas fa-pencil-alt"> módosítás</i></button>
+								<button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"> törlés</i></button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			
+			</table>
+		</row>	
+	</div>
+
+	<!-- JavaScript // https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 	<!-- jQuery // https://code.jquery.com/ -->
-	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>	
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>  
 
-	<!-- JavaScript and JavaScript bundle // https://www.bootstrapcdn.com/ -->
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
-	
-	<script type="text/javascript" src="js/functions.js"></script>
+	<!-- myFunctions -->	
+	<script type="text/javascript" src="js/myFunctions.js"></script>
 	
 </body>
 
