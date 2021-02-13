@@ -72,44 +72,48 @@
 				
 				<form action="#" th:action="@{/new}" th:object="${vehicle}" method="post">
 						
-						<p>Forgalmi rendszám: <input type="text" th:field="*{regnum}"/></p>
-						<p>Gyártó: <input type="text" th:field="*{man}"/></p>
-						<p>Típus: <input type="text" th:field="*{type}"/></p>
-						<p>Gyártás éve: <input type="text" th:field="*{yop}"/></p>
+					<p>Forgalmi rendszám: <input type="text" th:field="*{regnum}"/></p>
+					<p>Gyártó: <input type="text" th:field="*{man}"/></p>
+					<p>Típus: <input type="text" th:field="*{type}"/></p>
+					<p>Gyártás éve: <input type="text" th:field="*{yop}"/></p>
+					
+					<input type="submit" value="adatbázisba mentés" class="btn btn-primary btn-med"/>
 						
 						<!--
 						
-						class="input-group mb-3" 
+						<div class="input-group mb-3"> 
 						
-						<span class="input-group-text" id="inp1">forgalmi rendszám:</span>
-						<input type="text" id="regnum" th:field="*{regnum}" placeholder="ABC-123" class="form-control" aria-describedby="inp1" required/>
-						<span class="input-group-text" id="inp2">gyártó:</span>
-						<select class="form-select" id="man" th:field="*{man}" aria-describedby="inp2" required> 
-							<option selected></option>
-							<option value="1">M.A.N.</option>
-						</select>
-						<span class="input-group-text" id="inp3">típus:</span>
-						<select class="form-select" id="type" th:field="*{type}" aria-describedby="inp3" required> 
-							<option selected></option>
-							<option value="1">TGS</option>
-							<option value="2">TGM</option>
-							<option value="3">TGL</option>
-							<option value="4">TGX</option>
-							<option value="5">eTGX</option>
-						</select>
-						<span class="input-group-text" id="inp4">gyártás éve:</span>
-						<input type="text" id="yop" th:field="*{yop}" class="form-control" aria-describedby="inp4" required/>
+							<span class="input-group-text" id="inp1">forgalmi rendszám:</span>
+							<input type="text" id="regnum" th:field="*{regnum}" placeholder="ABC-123" class="form-control" aria-describedby="inp1" required/>
+							
+							<span class="input-group-text" id="inp2">gyártó:</span>
+							<select class="form-select" id="man" th:field="*{man}" aria-describedby="inp2" required> 
+								<option selected></option>
+								<option value="1">M.A.N.</option>
+							</select>
+							
+							<span class="input-group-text" id="inp3">típus:</span>
+							<select class="form-select" id="type" th:field="*{type}" aria-describedby="inp3" required> 
+								<option selected></option>
+								<option value="1">TGS</option>
+								<option value="2">TGM</option>
+								<option value="3">TGL</option>
+								<option value="4">TGX</option>
+								<option value="5">eTGX</option>
+							</select>
+							
+							<span class="input-group-text" id="inp4">gyártás éve:</span>
+							<input type="text" id="yop" th:field="*{yop}" class="form-control" aria-describedby="inp4" required/>
+						
+						</div>
+						
+						<div class="savebutton">
+							<button onclick="greetings()" class="btn btn-primary btn-med"><i class="fas fa-save !important"> mentés</i></button>
+						</div>
 						
 						-->
-						
-					<div class="savebutton">
-						<button onclick="greetings()" class="btn btn-primary btn-med"><i class="fas fa-save !important"> mentés</i></button>
-						<input type="submit" value="adatbázisba mentés" class="btn btn-primary btn-med"/>
-					</div>
-						
+							
 				</form>
-
-
 
 			</div>
 
