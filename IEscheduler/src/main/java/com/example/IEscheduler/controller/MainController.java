@@ -45,6 +45,22 @@ public class MainController {
 		return "vehicles";
 	}
 	
+	@PostMapping("/update")
+	public String updateSubmit(@ModelAttribute Vehicle vehicle, Model model) {
+		mainService.updateVehicle(vehicle.getId(), vehicle.getRegnum(), vehicle.getMan(), vehicle.getType(), vehicle.getYop());
+		model.addAttribute("vehicles", mainService.getVehicles());
+		model.addAttribute("vehicle", vehicle);
+		return "vehicles";
+	}
+	
+	@PostMapping("/delete")
+	public String deleteSubmit(@ModelAttribute Vehicle vehicle, Model model) {
+		mainService.deleteVehicle(vehicle.getId());
+		model.addAttribute("vehicles", mainService.getVehicles());
+		model.addAttribute("vehicle", vehicle);
+		return "vehicles";
+	}
+	
 	//kivételkezelés
 	@RequestMapping("/user/{id}")
 	public String searchUserById(@PathVariable(value="id") String id ) throws Exception{

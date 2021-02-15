@@ -40,5 +40,25 @@ public class MainService {
 		
 	}
 	
+	public void updateVehicle(long vehicleid, String regnum, String man, String type, int yop) {
+		
+		Vehicle vehicle = vehicleRepo.findById(vehicleid);
+		vehicle.setRegnum(regnum);
+		vehicle.setMan(man);
+		vehicle.setType(type);
+		vehicle.setYop(yop);
+		vehicleRepo.save(vehicle);
+			
+	}
+	
+	public void deleteVehicle(long vehicleid) {
+		
+		Vehicle vehicle = vehicleRepo.findById(vehicleid);
+		vehicle.setDeleted(true);
+		vehicleRepo.save(vehicle);
+		
+	}
+	
+	
 	
 }
