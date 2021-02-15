@@ -31,7 +31,7 @@ public class MainService {
 		
 	}
 	
-	public void newVehicle(boolean deleted, String regnum, String man, String type, int yop, long userid) {
+	public void newVehicle(boolean deleted, String regnum, String man, String type, Integer yop, long userid) {
 		
 		User owner =  userRepo.findById(userid);
 				
@@ -40,7 +40,7 @@ public class MainService {
 		
 	}
 	
-	public void updateVehicle(long vehicleid, String regnum, String man, String type, int yop) {
+	public void updateVehicle(long vehicleid, String regnum, String man, String type, Integer yop) {
 		
 		Vehicle vehicle = vehicleRepo.findById(vehicleid);
 		vehicle.setRegnum(regnum);

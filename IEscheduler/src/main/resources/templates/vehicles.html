@@ -24,7 +24,7 @@
 
 <body>
 
-	<!--test media size-->
+	<!--test media size
 	<div class="container-fluid mediasizetester">
 		<div class="d-block d-sm-none">XS</div>
 		<div class="d-none d-sm-block d-md-none">SM</div>
@@ -32,6 +32,7 @@
 		<div class="d-none d-lg-block d-xl-none">LG</div>
 		<div class="d-none d-xl-block">XL</div>
 	</div>
+	-->
 	
 	<nav class="navbar navbar-expand-md navbar-light shadow p-3 mb-5 bg-body rounded"> 
 		
@@ -65,19 +66,19 @@
 		<div class="collapse card" id="addNewVehicle">
 
 			<div class="card-header">
-				<h1>Jármű adatai</h1>
+				<h1>jármű hozzáadása</h1>
 			</div>
 
 			<div class="card-body">
 				
 				<form action="#" th:action="@{/new}" th:object="${vehicle}" method="post">
 						
-					<p>Forgalmi rendszám: <input type="text" th:field="*{regnum}"/></p>
-					<p>Gyártó: <input type="text" th:field="*{man}"/></p>
-					<p>Típus: <input type="text" th:field="*{type}"/></p>
-					<p>Gyártás éve: <input type="text" th:field="*{yop}"/></p>
+					<p>forgalmi rendszám: <input class="form-control" type="text" th:field="*{regnum}"/></p>
+					<p>gyártó: <input class="form-control" type="text" th:field="*{man}"/></p>
+					<p>típus: <input class="form-control" type="text" th:field="*{type}"/></p>
+					<p>gyártás éve: <input class="form-control" type="text" th:field="*{yop}"/></p>
 					
-					<input type="submit" value="adatbázisba mentés" class="btn btn-primary btn-med"/>
+					<input type="submit" value="mentés" class="btn btn-primary btn-med"/>
 						
 						<!--
 						
@@ -108,7 +109,7 @@
 						</div>
 						
 						<div class="savebutton">
-							<button onclick="greetings()" class="btn btn-primary btn-med"><i class="fas fa-save !important"> mentés</i></button>
+							<button onclick="newVehicle()" class="btn btn-primary btn-med"><i class="fas fa-save !important"> mentés</i></button>
 						</div>
 						
 						-->
@@ -123,8 +124,7 @@
 	
 	<div class="container col-md-12 cont2">
 		<row>
-			<table class="table table-striped table-hover table-bordered">
-	
+			<table class="table">
 				<thead>
 					<tr>
 						<title>Járművek</title>
@@ -137,22 +137,58 @@
 						<th class="col-3">művelet</th>
 					</tr>
 				</thead>
-				
 				<tbody>
-					<tr class="d-flex" th:each="vehicle : ${vehicles}">
-						<td class="col-3" th:text="${vehicle.regnum}"></td>
-						<td class="col-2" th:text="${vehicle.man}"></td>
-						<td class="col-2" th:text="${vehicle.type}"></td>
-						<td class="col-2" th:text="${vehicle.yop}"></td>
-						<td class="col-3">
-							<div class="button-group">
-								<button type="button" class="btn btn-info"><i class="fas fa-pencil-alt"> módosítás</i></button>
-								<button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"> törlés</i></button>
-							</div>
-						</td>
-					</tr>
+					<table class="table" th:each="vehicle : ${vehicles}">
+						<thead>
+							<tr>
+								<th class="col-3" th:text="${vehicle.regnum}"></th>
+								<th class="col-2" th:text="${vehicle.man}"></th>
+								<th class="col-2" th:text="${vehicle.type}"></th>
+								<th class="col-2" th:text="${vehicle.yop}"></th>
+								<th class="col-3">
+									<div class="button-group">
+										<button class="btn btn-primary btn-sm" th:href="'#modifyVehicle' + ${vehicle.id}" data-bs-toggle="collapse" aria-expanded="false" th:aria-controls="'modifyVehicle' + ${vehicle.id}"><i class="fas fa-pencil-alt"> módosítás</i></button>
+										<button class="btn btn-danger btn-sm" th:href="'#deleteVehicle' + ${vehicle.id}" data-bs-toggle="collapse" aria-expanded="false" th:aria-controls="'deleteVehicle' + ${vehicle.id}"><i class="fas fa-trash-alt"> törlés</i></button>
+									</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="collapse card" th:id="'modifyVehicle' + ${vehicle.id}">
+								<td>
+									<div class="card-header">
+										<h1>jármű módosítása</h1>
+									</div>
+									<div class="card-body">
+										<form action="#" th:action="@{/update/{id}(id=${vehicle.id})}" th:object="${vehicle}" method="post">
+											<!-- itt th:field helyett id, name és th:value attribútomokat használok, hogy a mezők fel legyenek töltve az aktuális értékekkel -->
+											<p>forgalmi rendszám: <input class="form-control" type="text" id="regnum" name="regnum" th:value="*{regnum}"/></p>
+											<p>gyártó: <input class="form-control" type="text" id="man" name="man" th:value="*{man}"/></p>
+											<p>típus: <input class="form-control" type="text" id="type" name="type" th:value="*{type}"/></p>
+											<p>gyártás éve: <input class="form-control" type="text" id="yop" name="yop" th:value="*{yop}" /></p>
+											<button type="submit" value="mentés" class="btn btn-primary btn-med">mentés</button>
+											<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+										</form>
+									</div>
+								</td>
+							</tr>
+							<tr class="collapse card" th:id="'deleteVehicle' + ${vehicle.id}">
+								<td>
+									<div class="card-header">
+										<h1>jármű törlése</h1>
+									</div>
+									<div class="card-body">
+										<form action="#" th:action="@{/delete/{id}(id=${vehicle.id})}" th:object="${vehicle}" method="post">
+											<p>Biztosan törölni szeretnéd?</p>	
+											<button type="submit" value="törlés" class="btn btn-primary btn-med">törlés</button>
+											<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+										</form>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</tbody>
-			
 			</table>
 		</row>	
 	</div>

@@ -16,18 +16,19 @@ public class Vehicle {
 	private String regnum; //registration number
 	private String man; //manufacturer
 	private String type; //type
-	private int yop; //year of production
+	private Integer yop; //year of production
 	@ManyToOne
 	private User owner;
 
 	//constructors
-	  //private constructor to read from db
+	
+	//->private constructor to read from db
 	public Vehicle() {
 
 	}
 	
-	//public constructor (without id!) to write into db
-	public Vehicle(boolean deleted, String regnum, String man, String type, int yop, User owner) {
+	//->public constructor (without id!) to write into db
+	public Vehicle(boolean deleted, String regnum, String man, String type, Integer yop, User owner) {
 		this.deleted = deleted;
 		this.regnum = regnum;
 		this.man = man;
@@ -77,11 +78,11 @@ public class Vehicle {
 		this.type = type;
 	}
 
-	public int getYop() {
+	public Integer getYop() {
 		return yop;
 	}
 
-	public void setYop(int yop) {
+	public void setYop(Integer yop) {
 		this.yop = yop;
 	}
 	

@@ -27,38 +27,25 @@ public class MainController {
 		model.addAttribute("vehicle",new Vehicle());
 		return "vehicles";
 	}
-
-/*	
-	@GetMapping("/new")
-	public String newForm(Model model){
-		model.addAttribute("vehicles", mainService.getVehicles());
-		model.addAttribute("vehicle", new Vehicle());
-		return "vehicles";
-	}
-*/
 	
 	@PostMapping("/new")
 	public String newSubmit(@ModelAttribute Vehicle vehicle, Model model) {
 		mainService.newVehicle(false, vehicle.getRegnum(), vehicle.getMan(), vehicle.getType(), vehicle.getYop(), 1);
-		model.addAttribute("vehicles", mainService.getVehicles());
-		model.addAttribute("vehicle", vehicle);
-		return "vehicles";
+		return "redirect:/";
 	}
 	
-	@PostMapping("/update")
-	public String updateSubmit(@ModelAttribute Vehicle vehicle, Model model) {
-		mainService.updateVehicle(vehicle.getId(), vehicle.getRegnum(), vehicle.getMan(), vehicle.getType(), vehicle.getYop());
-		model.addAttribute("vehicles", mainService.getVehicles());
-		model.addAttribute("vehicle", vehicle);
-		return "vehicles";
+	@PostMapping("/update/{id}")
+	public String updateSubmit(@PathVariable(value="id") String id, @ModelAttribute Vehicle vehicle, Model model) {
+		Long vehicleid = Long.parseLong(id);
+		mainService.updateVehicle(vehicleid, vehicle.getRegnum(), vehicle.getMan(), vehicle.getType(), vehicle.getYop());
+		return "redirect:/";
 	}
 	
-	@PostMapping("/delete")
-	public String deleteSubmit(@ModelAttribute Vehicle vehicle, Model model) {
-		mainService.deleteVehicle(vehicle.getId());
-		model.addAttribute("vehicles", mainService.getVehicles());
-		model.addAttribute("vehicle", vehicle);
-		return "vehicles";
+	@PostMapping("/delete/{id}")
+	public String deleteSubmit(@PathVariable(value="id") String id, @ModelAttribute Vehicle vehicle, Model model) {
+		Long vehicleid = Long.parseLong(id);
+		mainService.deleteVehicle(vehicleid);
+		return "redirect:/";
 	}
 	
 	//kivételkezelés

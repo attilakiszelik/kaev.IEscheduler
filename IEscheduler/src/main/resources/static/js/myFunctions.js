@@ -1,6 +1,6 @@
 //alert("I'm active");
 
-function greetings(){
+function newVehicle(){
 
 	var r = $('#regnum').val();
 	var m = $('#man option:selected').text();
