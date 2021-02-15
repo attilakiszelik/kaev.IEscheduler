@@ -27,13 +27,15 @@ public class MainController {
 		model.addAttribute("vehicle",new Vehicle());
 		return "vehicles";
 	}
-	
+
+/*	
 	@GetMapping("/new")
 	public String newForm(Model model){
 		model.addAttribute("vehicles", mainService.getVehicles());
 		model.addAttribute("vehicle", new Vehicle());
 		return "vehicles";
 	}
+*/
 	
 	@PostMapping("/new")
 	public String newSubmit(@ModelAttribute Vehicle vehicle, Model model) {

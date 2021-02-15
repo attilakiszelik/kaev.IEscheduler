@@ -26,7 +26,8 @@ public class MainService {
 
 	public List<Vehicle> getVehicles(){
 		
-		return vehicleRepo.findAll();
+		//return vehicleRepo.findAll();
+		return vehicleRepo.findAllnonDeleted();
 		
 	}
 	
