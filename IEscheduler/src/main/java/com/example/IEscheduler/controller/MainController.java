@@ -29,15 +29,15 @@ public class MainController {
 	}
 	
 	@GetMapping("/new")
-	public String newVehicle(Model model){
-		mainService.newVehicle(false, "ZZZ-111", "IVECO", "nagy", 2020, 1);
+	public String newForm(Model model){
 		model.addAttribute("vehicles", mainService.getVehicles());
 		model.addAttribute("vehicle", new Vehicle());
 		return "vehicles";
 	}
 	
 	@PostMapping("/new")
-	public String greetingSubmit(@ModelAttribute Vehicle vehicle, Model model) {
+	public String newSubmit(@ModelAttribute Vehicle vehicle, Model model) {
+		mainService.newVehicle(false, vehicle.getRegnum(), vehicle.getMan(), vehicle.getType(), vehicle.getYop(), 1);
 		model.addAttribute("vehicles", mainService.getVehicles());
 		model.addAttribute("vehicle", vehicle);
 		return "vehicles";
