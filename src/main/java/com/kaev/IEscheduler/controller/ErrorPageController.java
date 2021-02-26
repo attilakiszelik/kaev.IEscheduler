@@ -41,7 +41,7 @@ public class ErrorPageController implements ErrorController{
 		model.addAttribute("path", error.get("path"));
 		model.addAttribute("status", error.get("status"));
 		
-		return "error";
+		return "error/error";
 	
 		//TODO: innentől lehet még variálni, hogy ha a status pl.: 404, akkor ezt és ezt tegye, stb.
 	}
