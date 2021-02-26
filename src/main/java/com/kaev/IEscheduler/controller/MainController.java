@@ -21,32 +21,42 @@ public class MainController {
 	public void setMyService(MainService mainService) {
 		this.mainService = mainService;
 	}
-
-	@GetMapping("/")
+	
+	@GetMapping("/scheduler")
+	public String scheduler(){
+		return "scheduler";
+	}
+	
+	@GetMapping("/vehicles")
 	public String vehicles(Model model){
 		model.addAttribute("vehicles", mainService.getVehicles());
 		model.addAttribute("vehicle",new Vehicle());
 		return "vehicles";
 	}
 	
+	@GetMapping("/profile")
+	public String profile(){
+		return "profile";
+	}
+	
 	@PostMapping("/new")
 	public String newSubmit(@ModelAttribute Vehicle vehicle, Model model) {
 		mainService.newVehicle(false, vehicle.getRegnum(), vehicle.getMan(), vehicle.getType(), vehicle.getYop(), 1);
-		return "redirect:/";
+		return "redirect:/vehicles";
 	}
 	
 	@PostMapping("/update/{id}")
 	public String updateSubmit(@PathVariable(value="id") String id, @ModelAttribute Vehicle vehicle, Model model) {
 		Long vehicleid = Long.parseLong(id);
 		mainService.updateVehicle(vehicleid, vehicle.getRegnum(), vehicle.getMan(), vehicle.getType(), vehicle.getYop());
-		return "redirect:/";
+		return "redirect:/vehicles";
 	}
 	
 	@PostMapping("/delete/{id}")
 	public String deleteSubmit(@PathVariable(value="id") String id, @ModelAttribute Vehicle vehicle, Model model) {
 		Long vehicleid = Long.parseLong(id);
 		mainService.deleteVehicle(vehicleid);
-		return "redirect:/";
+		return "redirect:/vehicles";
 	}
 	
 	//kivételkezelés

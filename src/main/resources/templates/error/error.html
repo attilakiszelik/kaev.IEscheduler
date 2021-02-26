@@ -1,91 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="layouts/main">
 
 <head>
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>Inter-Épfu szervíz időpontfoglalás</title>
 
-	<!-- CSS // https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<title>hibaüzenet</title>
 
-	<!-- font awesome // https://fontawesome.com/ -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
-	
-	<!-- myStyleSheet -->
-	<link rel="stylesheet" type="text/css" href="css/myStyleSheet.css">
-	
 </head>
 
 <body>
 
-	<!--test media size
-	<div class="container-fluid mediasizetester">
-		<div class="d-block d-sm-none">XS</div>
-		<div class="d-none d-sm-block d-md-none">SM</div>
-		<div class="d-none d-md-block d-lg-none">MD</div>
-		<div class="d-none d-lg-block d-xl-none">LG</div>
-		<div class="d-none d-xl-block">XL</div>
-	</div>
-	-->
+	<!-- page content -->
+	<div layout:fragment="content">
 	
-	<nav class="navbar navbar-expand-md navbar-light shadow p-3 mb-5 bg-body rounded"> 
+		<div class="container">
+	
+			<h1>Ajajj, valami hiba történt...</h1>
+			<img src="https://media.giphy.com/media/H6c3xjdHEQzqGDj5dd/giphy.gif" alt="error"  width=250/>
+			
+		</div>	
 		
-		<a class="navbar-brand" href="#">
-			<img src="images/logo.jpg" alt="">
-		</a>
-
-		<button class="navbar-toggler" href="#navbarNav" data-bs-toggle="collapse" aria-expanded="false" aria-controls="navbarNav">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="navbar-collapse collapse" id="navbarNav">
-			<div class="navbar-nav">
-				<a class="nav-link" href="#">Időpontfoglalás</a>
-				<a class="nav-link" href="#">Járművek</a>
-				<a class="nav-link" href="#">Profil</a>
-				<a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i></a>
-			</div>
+		<div class="container">	
+		
+			<article>
+			
+				<header>
+					<p th:text="${error}">Ez itt a hiba</p>
+				</header>
+			
+				<section>
+					<p th:text="${message}">Ez itt az üzenet</p>
+					<p th:text="${path}">Ez itt az üzenet</p>
+					<p th:text="${timestamp}">Ez itt az üzenet</p>
+					<p th:text="${status}">Ez itt az üzenet</p>
+				</section>
+			
+			</article>
+			
 		</div>
 
-	</nav>
-
-<div class="container">
-
-	<h1>Ajajj, valami hiba történt...</h1>
-	<img src="https://media.giphy.com/media/H6c3xjdHEQzqGDj5dd/giphy.gif" alt="error"  width=250/>
-	
-</div>	
-	
-<div class="container">	
-
-	<article>
-	
-		<header>
-			<p th:text="${error}">Ez itt a hiba</p>
-		</header>
-	
-		<section>
-			<p th:text="${message}">Ez itt az üzenet</p>
-			<p th:text="${path}">Ez itt az üzenet</p>
-			<p th:text="${timestamp}">Ez itt az üzenet</p>
-			<p th:text="${status}">Ez itt az üzenet</p>
-		</section>
-	
-	</article>
-	
-</div>
-
-	<!-- JavaScript // https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-
-	<!-- jQuery // https://code.jquery.com/ -->
-	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>  
-
-	<!-- myFunctions -->	
-	<script type="text/javascript" src="js/myFunctions.js"></script>
+	</div>
 	
 </body>
 
