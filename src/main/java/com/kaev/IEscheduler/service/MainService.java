@@ -1,12 +1,13 @@
-package com.example.IEscheduler.service;
+package com.kaev.IEscheduler.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.IEscheduler.domain.User;
-import com.example.IEscheduler.domain.Vehicle;
-import com.example.IEscheduler.repository.UserRepository;
-import com.example.IEscheduler.repository.VehicleRepository;
+
+import com.kaev.IEscheduler.domain.User;
+import com.kaev.IEscheduler.domain.Vehicle;
+import com.kaev.IEscheduler.repository.UserRepository;
+import com.kaev.IEscheduler.repository.VehicleRepository;
 
 @Service
 public class MainService {

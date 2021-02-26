@@ -1,4 +1,4 @@
-package com.example.IEscheduler.controller;
+package com.kaev.IEscheduler.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,10 +1,11 @@
-package com.example.IEscheduler.repository;
+package com.kaev.IEscheduler.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import com.example.IEscheduler.domain.Vehicle;
+
+import com.kaev.IEscheduler.domain.Vehicle;
 
 public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 

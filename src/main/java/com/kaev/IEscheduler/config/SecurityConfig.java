@@ -1,4 +1,4 @@
-package com.example.IEscheduler.config;
+package com.kaev.IEscheduler.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.example.IEscheduler.domain;
+package com.kaev.IEscheduler.domain;
 
 import java.util.List;
 import javax.persistence.Entity;

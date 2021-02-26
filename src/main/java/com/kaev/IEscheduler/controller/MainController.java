@@ -1,7 +1,5 @@
-package com.example.IEscheduler.controller;
+package com.kaev.IEscheduler.controller;
 
-import com.example.IEscheduler.domain.Vehicle;
-import com.example.IEscheduler.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kaev.IEscheduler.domain.Vehicle;
+import com.kaev.IEscheduler.service.MainService;
 
 @Controller
 public class MainController {

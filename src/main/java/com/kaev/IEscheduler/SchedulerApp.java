@@ -1,4 +1,4 @@
-package com.example.IEscheduler;
+package com.kaev.IEscheduler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
