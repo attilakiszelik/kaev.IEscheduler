@@ -13,7 +13,7 @@
 
 	<!-- CSS // https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
+	
 	<!-- font awesome // https://fontawesome.com/ -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
 	
@@ -45,14 +45,18 @@
 		</button>
 
 		<div class="navbar-collapse collapse" id="navbarNav">
-			<div class="navbar-nav">
+			<div class="navbar-nav">			
 				<a class="nav-link" href="#">Időpontfoglalás</a>
 				<a class="nav-link" href="#">Járművek</a>
 				<a class="nav-link" href="#">Profil</a>
-				<a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i></a>
+				<a class="nav-link" href="#">Üdv <span sec:authentication="name"></span></a>
 			</div>
-		</div>
 
+			<form class="nav-link" sec:authorize="isAuthenticated()" id="formLogout" th:action="@{/logout}" method="post">
+				<a href="javascript:{}" onclick="document.getElementById('formLogout').submit(); return false;"><i class="fas fa-sign-out-alt"></i></a>
+			</form>	
+		</div>
+		
 	</nav>
 		
 	<div class="container col-md-12 cont1">
