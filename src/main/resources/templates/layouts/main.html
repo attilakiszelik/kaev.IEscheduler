@@ -48,12 +48,16 @@
 				<a class="nav-link" href="#">Időpontfoglalás</a>
 				<a class="nav-link" href="#">Járművek</a>
 				<a class="nav-link" href="#">Profil</a>
-				<a class="nav-link" href="#">Üdv <span sec:authentication="name"></span></a>
+				<form sec:authorize="isAuthenticated()" id="formLogout" th:action="@{/logout}" method="post">
+					<a class="nav-link" href="javascript:{}" onclick="document.getElementById('formLogout').submit(); return false;"><i class="fas fa-sign-out-alt"></i></a>
+				</form>	
 			</div>
 
-			<form class="nav-link" sec:authorize="isAuthenticated()" id="formLogout" th:action="@{/logout}" method="post">
-				<a href="javascript:{}" onclick="document.getElementById('formLogout').submit(); return false;"><i class="fas fa-sign-out-alt"></i></a>
-			</form>	
+			<div class="">
+				<a>bejelentkezve: <span sec:authentication="name"></span></a>
+			</div>
+				
+
 		</div>
 		
 	</nav>
