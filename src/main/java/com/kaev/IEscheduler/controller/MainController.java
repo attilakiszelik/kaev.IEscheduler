@@ -1,5 +1,7 @@
 package com.kaev.IEscheduler.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,12 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.kaev.IEscheduler.domain.User;
 import com.kaev.IEscheduler.domain.Vehicle;
 import com.kaev.IEscheduler.service.MainService;
 
 @Controller
 public class MainController {
+	
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private MainService mainService;
 
@@ -57,6 +61,21 @@ public class MainController {
 		Long vehicleid = Long.parseLong(id);
 		mainService.deleteVehicle(vehicleid);
 		return "redirect:/vehicles";
+	}
+	
+	@GetMapping("/registration")
+	public String registration(Model model){
+		model.addAttribute("user", new User());
+		return "auth/registration";
+	}
+	
+	@PostMapping("/reg")
+	public String reg(@ModelAttribute User user){
+		log.debug("Új regizstráció");
+		log.debug(user.getName());
+		log.debug(user.getEmail());
+		log.debug(user.getPassword());
+		return "auth/login";
 	}
 	
 	//kivételkezelés
