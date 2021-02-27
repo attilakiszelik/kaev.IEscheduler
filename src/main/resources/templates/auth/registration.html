@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Inter-Épfu - regisztráció</title>
+
+	<!-- CSS // https://getbootstrap.com/docs/4.6/getting-started/introduction/ -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+	<!-- font awesome // https://fontawesome.com/ -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<!-- loginStyleSheet -->
+	<link rel="stylesheet" type="text/css" href="css/loginStyleSheet.css">
+	
+</head>
+<body>
+	
+		<div class="container">
+			<div class="d-flex justify-content-start h-100">
+				<div class="card">
+				
+					<div class="card-header">
+						<h3>Regisztráció</h3>
+					</div>
+					
+					<div class="card-body">
+						<form name="registration" th:action="@{/reg}" th:object="${user}" method="post" class="form-signin">
+						
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-user"></i></span>
+								</div>
+								<input type="text" id="name" name="name" th:field="*{name}" class="form-control" placeholder="név" required="false"/>
+							</div>
+							
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-at"></i></span>
+								</div>
+								<input type="email" id="email" name="email" th:field="*{email}" class="form-control" placeholder="e-mail cím" required="true"/>
+							</div>
+							
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-key"></i></span>
+								</div>
+								<input type="password" id="password" name="password" th:field="*{password}" class="form-control" placeholder="jelszó" required="true"/>
+							</div>
+							
+							<!-- TODO -->
+							<!--  
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-key"></i></span>
+								</div>
+								<input type="password" id="password2" name="password2" class="form-control" placeholder="jelszó mégegyszer" required="true"/>
+							</div>
+							-->
+							
+							<div class="form-group">
+								<button type="submit" class="btn float-right login_btn">OK</button>
+							</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</body>
+</html>
+
+
