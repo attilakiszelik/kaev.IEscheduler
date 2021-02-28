@@ -101,4 +101,12 @@ public class User {
 				+ password + "]";
 	}
 	
+	//method
+/*	public void addRoles(String roleName) {
+		if(this.roles==null||this.roles.isEmpty())
+			this.roles=new HashSet<>();
+			this.roles.add(new Role(roleName));
+		}
+	}
+*/	
 }
