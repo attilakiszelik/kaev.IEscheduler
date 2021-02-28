@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.kaev.IEscheduler.domain.User;
 import com.kaev.IEscheduler.domain.Vehicle;
+import com.kaev.IEscheduler.service.EmailService;
 import com.kaev.IEscheduler.service.MainService;
 
 @Controller
@@ -20,10 +21,16 @@ public class MainController {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private MainService mainService;
+	private EmailService emailService;
 
 	@Autowired	
-	public void setMyService(MainService mainService) {
+	public void setMyMainService(MainService mainService) {
 		this.mainService = mainService;
+	}
+	
+	@Autowired	
+	public void setMyEmailService(EmailService emailService) {
+		this.emailService = emailService;
 	}
 	
 	@GetMapping("/scheduler")
@@ -70,12 +77,13 @@ public class MainController {
 	}
 	
 	@PostMapping("/reg")
-	public String reg(@ModelAttribute User user){
-		log.debug("Új regizstráció");
+	public String reg(@ModelAttribute User user, Model model){
+		emailService.sendMessage(user.getName(), user.getEmail());
+		log.debug("Új regisztráció");
 		log.debug(user.getName());
 		log.debug(user.getEmail());
 		log.debug(user.getPassword());
-		return "auth/login";
+		return "redirect:/auth/login";
 	}
 	
 	//kivételkezelés
