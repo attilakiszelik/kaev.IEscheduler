@@ -1,5 +1,5 @@
-INSERT INTO USERS (name) VALUES ('Gyula')
-INSERT INTO USERS (name) VALUES ('Béla')
+INSERT INTO USERS (name, email, password) VALUES ('Gyula', 'gyula@gyula.com', 'gyula')
+INSERT INTO USERS (name, email, password) VALUES ('Béla', 'bela@bela.com', 'bela')
 
 INSERT INTO VEHICLES (deleted,regnum,man,type,yop,owner_id) VALUES (false,'ABC-000','MAN','TGS',2000,1)
 INSERT INTO VEHICLES (deleted,regnum,man,type,yop,owner_id) VALUES (false,'ABC-123','MAN','TGM',2000,1)
