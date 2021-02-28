@@ -14,6 +14,7 @@ import com.kaev.IEscheduler.domain.User;
 import com.kaev.IEscheduler.domain.Vehicle;
 import com.kaev.IEscheduler.service.EmailService;
 import com.kaev.IEscheduler.service.MainService;
+import com.kaev.IEscheduler.service.UserService;
 
 @Controller
 public class MainController {
@@ -22,6 +23,7 @@ public class MainController {
 	
 	private MainService mainService;
 	private EmailService emailService;
+	private UserService userService;
 
 	@Autowired	
 	public void setMyMainService(MainService mainService) {
@@ -31,6 +33,11 @@ public class MainController {
 	@Autowired	
 	public void setMyEmailService(EmailService emailService) {
 		this.emailService = emailService;
+	}
+	
+	@Autowired	
+	public void setMyUserService(UserService userService) {
+		this.userService = userService;
 	}
 	
 	@GetMapping("/scheduler")
@@ -78,6 +85,7 @@ public class MainController {
 	
 	@PostMapping("/reg")
 	public String reg(@ModelAttribute User user, Model model){
+		userService.registerUser(user);
 		emailService.sendMessage(user.getName(), user.getEmail());
 		log.debug("Új regisztráció");
 		log.debug(user.getName());
