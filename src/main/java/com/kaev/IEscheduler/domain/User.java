@@ -27,6 +27,15 @@ public class User {
 	
 	@Column(nullable=false)
 	private String password;
+	
+	@Column
+	private String activation_key;
+	
+	@Column(nullable=false)
+	private boolean enabled;
+	
+	@Column(nullable=false)
+	private boolean locked;
 /*
 	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)	
 	@JoinTable(
@@ -94,11 +103,34 @@ public class User {
 		this.password = password;
 	}
 
-	//toString
+	public String getActivation_key() {
+		return activation_key;
+	}
+
+	public void setActivation_key(String activation_key) {
+		this.activation_key = activation_key;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public boolean isLocked() {
+		return locked;
+	}
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", vehicles=" + vehicles + ", email=" + email + ", password="
-				+ password + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", activation_key="
+				+ activation_key + ", enabled=" + enabled + ", locked=" + locked + ", vehicles=" + vehicles + "]";
 	}
 	
 	//method
