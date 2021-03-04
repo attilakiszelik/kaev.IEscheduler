@@ -1,5 +1,7 @@
 package com.kaev.IEscheduler.controller;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +97,16 @@ public class MainController {
 		log.debug("enabled: " + user.isEnabled());
 		log.debug("locked: " + user.isLocked());
 		return "redirect:/auth/login";
+	}
+	
+	@GetMapping("/activation/{activation_key}")
+	public String authentication(@PathVariable(value="activation_key") String activation_key, HttpServletResponse response) {
+		String result= userService.userActivation(activation_key);
+		
+		if ( result.equals("userNotFound") )
+			return "redirect:/auth/login?usernotfound";
+		
+		return "redirect:/auth/login?activationsuccess";
 	}
 	
 	//kivételkezelés

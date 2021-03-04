@@ -60,8 +60,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		user.setActivation_key(generateActivation_Key());
 		user.setEnabled(false);
 		user.setLocked(true);
-		
-		User u = userRepository.save(user);
+		userRepository.save(user);
 		
 		return "userRegistrated";
 	}
@@ -74,11 +73,25 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		
 		for (int i=0; i<activation_key.length; i++) {
 			
-			activation_key[i]=(char) (32 + random.nextInt(95));
+			activation_key[i]=(char) ('a' + random.nextInt(26));
 			
 		}
 		
 		return new String(activation_key);
+	}
+
+	@Override
+	public String userActivation(String activation_key) {
+		
+		User user = userRepository.findByActivation_key(activation_key);
+		
+		if(user==null) return "userNotFound";
+		
+		user.setActivation_key("already_activated");
+		user.setEnabled(true);
+		userRepository.save(user);
+		
+		return "userActivated";
 	}
 	
 }
