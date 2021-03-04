@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kaev.IEscheduler.domain.Role;
@@ -48,6 +49,9 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 			user.addRoles(USER_ROLE);
 		}
 */		
+		
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		
 		User u = userRepository.save(user);
 	}
 	
