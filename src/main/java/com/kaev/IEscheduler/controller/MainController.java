@@ -87,10 +87,13 @@ public class MainController {
 	public String reg(@ModelAttribute User user, Model model){
 		userService.registerUser(user);
 		//emailService.sendMessage(user.getName(), user.getEmail());
-		log.debug("Új regisztráció");
-		log.debug(user.getName());
-		log.debug(user.getEmail());
-		log.debug(user.getPassword());
+		log.debug("új regisztráció");
+		log.debug("felhasználó név: " + user.getName());
+		log.debug("e-mail cím: " + user.getEmail());
+		log.debug("jelszó (titkosítva): " + user.getPassword());
+		log.debug("activation_key: " + user.getActivation_key());
+		log.debug("enabled: " + user.isEnabled());
+		log.debug("locked: " + user.isLocked());
 		return "redirect:/auth/login";
 	}
 	

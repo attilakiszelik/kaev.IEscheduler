@@ -1,5 +1,7 @@
 package com.kaev.IEscheduler.service;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -40,7 +42,12 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	}
 
 	@Override
-	public void registerUser(User user) {
+	public String registerUser(User user) {
+		
+		User userCheck = userRepository.findByEmail(user.getEmail()) ;
+		
+		if (userCheck!=null) return "userAlreadyExists";
+		
 		Role userRole = roleRepository.findByRole(USER_ROLE);
 /*		
 		if (userRole != null) {
@@ -49,10 +56,29 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 			user.addRoles(USER_ROLE);
 		}
 */		
-		
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		user.setActivation_key(generateActivation_Key());
+		user.setEnabled(false);
+		user.setLocked(true);
 		
 		User u = userRepository.save(user);
+		
+		return "userRegistrated";
+	}
+
+	private String generateActivation_Key() {
+
+		char[] activation_key = new char[30];
+		
+		Random random = new Random();
+		
+		for (int i=0; i<activation_key.length; i++) {
+			
+			activation_key[i]=(char) (32 + random.nextInt(95));
+			
+		}
+		
+		return new String(activation_key);
 	}
 	
 }
