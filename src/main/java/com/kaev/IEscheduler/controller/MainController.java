@@ -86,7 +86,7 @@ public class MainController {
 	@PostMapping("/reg")
 	public String reg(@ModelAttribute User user, Model model){
 		userService.registerUser(user);
-		emailService.sendMessage(user.getName(), user.getEmail());
+		//emailService.sendMessage(user.getName(), user.getEmail());
 		log.debug("Új regisztráció");
 		log.debug(user.getName());
 		log.debug(user.getEmail());
