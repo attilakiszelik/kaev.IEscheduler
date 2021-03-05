@@ -1,0 +1,52 @@
+html *
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.mediasizetester{
+  text-align:center;
+  margin: 0 0 20px 20px;
+}
+
+.navbar{
+ background-color: #ffffff;
+}
+
+.navbar-brand{
+  padding: 5px 5px 5px 5px;
+}
+
+.navbar-toggler{
+  margin: 0 5px 0 0;
+}
+
+nav .navbar-collapse .navbar-nav a {
+  text-align: right;
+  padding: 10px 10px 10px 10px; 
+}
+
+nav .navbar-collapse .navbar-nav a:hover{
+  background-color: lightgrey;
+  border-radius: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+.cont1{
+  margin: 20px 20px 20px 20px;
+}
+
+.card-body{
+  margin: 20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
+}
+
+.savebutton{
+  text-align: right;
+}
+
+.cont2{
+  margin: 20px 20px 20px 20px;
+  text-align: center;
+}

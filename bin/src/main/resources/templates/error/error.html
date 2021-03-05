@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="layouts/main">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>hibaüzenet</title>
+
+</head>
+
+<body>
+
+	<!-- page content -->
+	<div layout:fragment="content">
+	
+		<div class="container">
+	
+			<h1>Ajajj, valami hiba történt...</h1>
+			<img src="https://media.giphy.com/media/H6c3xjdHEQzqGDj5dd/giphy.gif" alt="error"  width=250/>
+			
+		</div>	
+		
+		<div class="container">	
+		
+			<article>
+			
+				<header>
+					<p th:text="${error}">Ez itt a hiba</p>
+				</header>
+			
+				<section>
+					<p th:text="${message}">Ez itt az üzenet</p>
+					<p th:text="${path}">Ez itt az üzenet</p>
+					<p th:text="${timestamp}">Ez itt az üzenet</p>
+					<p th:text="${status}">Ez itt az üzenet</p>
+				</section>
+			
+			</article>
+			
+		</div>
+
+	</div>
+	
+</body>
+
+</html>
