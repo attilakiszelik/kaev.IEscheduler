@@ -48,6 +48,7 @@
 				<a class="nav-link" href="/scheduler">Időpontfoglalás</a>
 				<a class="nav-link" href="/vehicles">Járművek</a>
 				<a class="nav-link" href="/profile">Profil</a>
+				<!--sec:authorize="hasRole('ADMIN')"-->
 				<a class="nav-link" href="/registrations">Regisztrációk jóváhagyása</a>
 				<form sec:authorize="isAuthenticated()" id="formLogout" th:action="@{/logout}" method="post">
 					<a class="nav-link" href="javascript:{}" onclick="document.getElementById('formLogout').submit(); return false;"><i class="fas fa-sign-out-alt"></i></a>
