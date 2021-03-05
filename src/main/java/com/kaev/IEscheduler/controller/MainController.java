@@ -35,6 +35,11 @@ public class MainController {
 		this.userService = userService;
 	}
 	
+	@GetMapping("/registrations")
+	public String registrations(){
+		return "registrations";
+	}
+	
 	@GetMapping("/scheduler")
 	public String scheduler(){
 		return "scheduler";
