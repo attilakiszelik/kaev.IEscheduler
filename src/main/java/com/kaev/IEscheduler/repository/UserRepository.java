@@ -17,8 +17,13 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	User findByEmail(String email);
 
 	@Query(
-	value = "SELECT * FROM USERS u WHERE u.activation_key = :activation_key", 
+	value = "SELECT * FROM USERS u WHERE u.ACTIVATION_KEY = :activation_key", 
 	nativeQuery = true)
 	User findByActivation_key(@Param("activation_key") String activation_key);
+	
+	@Query(
+	value = "SELECT * FROM USERS u WHERE u.LOCKED = true", 
+	nativeQuery = true)
+	List<User> findAllLocked();
 	
 }

@@ -36,7 +36,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/registrations")
-	public String registrations(){
+	public String registrations(Model model){
+		model.addAttribute("users", mainService.getUsers());
 		return "registrations";
 	}
 	
@@ -108,6 +109,18 @@ public class MainController {
 			log.debug("regisztráció aktiválva!");
 		
 		return "redirect:/auth/login?activationsuccess";
+	}
+	
+	@PostMapping("/unlock/accept/{id}")
+	public String unlockAccept(@PathVariable(value="id") String id, @ModelAttribute User user, Model model) {
+		//...
+		return "redirect:/registrations";
+	}
+	
+	@PostMapping("/unloc/decline/{id}")
+	public String unlockDecline(@PathVariable(value="id") String id, @ModelAttribute User user, Model model) {
+		//...
+		return "redirect:/registrations";
 	}
 	
 	//kivételkezelés

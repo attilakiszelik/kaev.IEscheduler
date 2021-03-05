@@ -59,6 +59,12 @@ public class MainService {
 		vehicleRepo.save(vehicle);
 		
 	}
+
+	public List<User> getUsers() {
+		
+		return userRepo.findAllLocked();
+		
+	}
 	
 	
 	
