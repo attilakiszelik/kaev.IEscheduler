@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.kaev.IEscheduler.domain.Role;
 import com.kaev.IEscheduler.domain.User;
 import com.kaev.IEscheduler.repository.RoleRepository;
@@ -19,12 +18,18 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
+	private EmailService emailService;
 	private final String USER_ROLE = "USER";
 	
 	@Autowired
 	public UserServiceImpl (UserRepository userRepository,RoleRepository roleRepository) {
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
+	}
+	
+	@Autowired	
+	public void setMyEmailService(EmailService emailService) {
+		this.emailService = emailService;
 	}
 	
 	@Override
@@ -62,6 +67,8 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		user.setLocked(true);
 		userRepository.save(user);
 		
+		emailService.sendRegMessage(user.getName(), user.getEmail(), user.getActivation_key());
+	
 		return "userRegistrated";
 	}
 
@@ -90,6 +97,8 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		user.setActivation_key("already_activated");
 		user.setEnabled(true);
 		userRepository.save(user);
+		
+		emailService.sendActMessage(user.getName(), user.getEmail());
 		
 		return "userActivated";
 	}

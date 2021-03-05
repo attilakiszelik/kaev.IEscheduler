@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.kaev.IEscheduler.domain.User;
 import com.kaev.IEscheduler.domain.Vehicle;
-import com.kaev.IEscheduler.service.EmailService;
 import com.kaev.IEscheduler.service.MainService;
 import com.kaev.IEscheduler.service.UserService;
 
@@ -24,19 +23,13 @@ public class MainController {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	private MainService mainService;
-	private EmailService emailService;
 	private UserService userService;
 
 	@Autowired	
 	public void setMyMainService(MainService mainService) {
 		this.mainService = mainService;
 	}
-	
-	@Autowired	
-	public void setMyEmailService(EmailService emailService) {
-		this.emailService = emailService;
-	}
-	
+
 	@Autowired	
 	public void setMyUserService(UserService userService) {
 		this.userService = userService;
@@ -88,7 +81,6 @@ public class MainController {
 	@PostMapping("/reg")
 	public String reg(@ModelAttribute User user, Model model){
 		userService.registerUser(user);
-		//emailService.sendMessage(user.getName(), user.getEmail());
 		log.debug("új regisztráció");
 		log.debug("felhasználó név: " + user.getName());
 		log.debug("e-mail cím: " + user.getEmail());
@@ -101,10 +93,14 @@ public class MainController {
 	
 	@GetMapping("/activation/{activation_key}")
 	public String authentication(@PathVariable(value="activation_key") String activation_key, HttpServletResponse response) {
+		
 		String result= userService.userActivation(activation_key);
 		
 		if ( result.equals("userNotFound") )
 			return "redirect:/auth/login?usernotfound";
+		
+		if( result.equals("userActivated") )
+			log.debug("regisztráció aktiválva!");
 		
 		return "redirect:/auth/login?activationsuccess";
 	}
