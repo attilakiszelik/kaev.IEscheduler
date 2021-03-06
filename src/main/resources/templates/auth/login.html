@@ -38,6 +38,18 @@
 								sikeresen kijelentkeztél
 							</div>
 							
+							<div th:if="${param.registrationsuccess}" class="alert alert-success">
+								sikeres regisztráció
+							</div>
+							
+							<div th:if="${param.activationsuccess}" class="alert alert-success">
+								sikeres aktiválás
+							</div>
+							
+							<div th:if="${param.usernotfound}" class="alert alert-danger">
+								felhasználó nem található
+							</div>
+							
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>

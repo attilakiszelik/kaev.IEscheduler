@@ -41,8 +41,17 @@
 									<th class="col-4" th:text="${user.email}"></th>
 									<th class="col-4">
 										<div class="button-group">
+											<!--
 											<button class="btn btn-success btn-sm" th:href="'#acceptUser' + ${user.id}" data-bs-toggle="collapse" aria-expanded="false" th:aria-controls="'#acceptUser' + ${user.id}"><i class="fas fa-check-square"> jóváhagyás</i></button>
 											<button class="btn btn-danger btn-sm" th:href="'#declineUser' + ${user.id}" data-bs-toggle="collapse" aria-expanded="false" th:aria-controls="'#declineUser' + ${user.id}"><i class="fas fa-times-circle"> elutasítás</i></button>
+											-->
+											<form action="#" th:action="@{/unlock/accept/{id}(id=${user.id})}" th:object="${user}" method="post">
+												<button type="submit" value="jóváhagyás" class="btn btn-success btn-med"><i class="fas fa-check-square"> jóváhagyás</i></button>
+											</form>
+											<form action="#" th:action="@{/unlock/decline/{id}(id=${user.id})}" th:object="${user}" method="post">
+												<button type="submit" value="elutasítás" class="btn btn-danger btn-med"><i class="fas fa-times-circle"> elutasítás</i></button>
+											</form>
+											
 										</div>
 									</th>
 								</tr>

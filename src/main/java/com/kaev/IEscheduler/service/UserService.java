@@ -8,6 +8,10 @@ public interface UserService {
 
 	public String registerUser(User user);
 
-	public String userActivation(String activation_key);
+	public String activateUser(String activation_key);
+	
+	public String unlockUser(Long id);
+
+	public String deleteUser(Long id);
 	
 }

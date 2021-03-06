@@ -1,8 +1,10 @@
 package com.kaev.IEscheduler.service;
 
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -88,7 +90,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	}
 
 	@Override
-	public String userActivation(String activation_key) {
+	public String activateUser(String activation_key) {
 		
 		User user = userRepository.findByActivation_key(activation_key);
 		
@@ -101,6 +103,33 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		emailService.sendActMessage(user.getName(), user.getEmail());
 		
 		return "userActivated";
+	}
+
+	@Override
+	public String unlockUser(Long userid) {
+
+		Optional<User> optionalUser = userRepository.findById(userid);
+		User user = optionalUser.get();
+		
+		user.setLocked(false);
+		userRepository.save(user);
+		
+		emailService.sendUnlMessage(user.getName(), user.getEmail());
+		
+		return "userUnlocked";
+	}
+
+	@Override
+	public String deleteUser(Long userid) {
+		
+		Optional<User> optionalUser = userRepository.findById(userid);
+		User user = optionalUser.get();
+		
+		userRepository.delete(user);
+		
+		emailService.sendDelMessage(user.getName(), user.getEmail());
+		
+		return "userDeleted";
 	}
 	
 }

@@ -109,5 +109,26 @@ public class EmailService {
 		}
 		
 	}
+
+	public void sendDelMessage(String name, String email) {
+		SimpleMailMessage message = null;
+		
+		try {
+			message = new SimpleMailMessage();
+			message.setFrom(username);
+			message.setTo(email);
+			message.setSubject("Felhasználói fiók visszautasítása");
+			message.setText("Kedves " + name + "!\n"
+							+ "\n"
+							+ "Regisztrációd visszautasításra került az Inter-Épfu Kft. által. Ha az ügyfelünk vagy, kérlek vedd fel velünk a kapcsolatot!\n"
+							+ "\n"
+							+ "Üdvözlettel,\n"
+							+ "az Inter-Épfu csapata");
+			javaMailSender.send(message);
+		} catch (Exception e) {
+			log.error("Hiba e-mail küldéskor: " + e);
+		}
+		
+	}
 	
 }
