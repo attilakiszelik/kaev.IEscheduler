@@ -40,12 +40,6 @@ public class MainController {
 		return "redirect:/scheduler";
 	}
 	
-	@GetMapping("/registrations")
-	public String registrations(Model model){
-		model.addAttribute("users", mainService.getUsers());
-		return "registrations";
-	}
-	
 	@GetMapping("/scheduler")
 	public String scheduler(){
 		return "scheduler";
@@ -61,6 +55,12 @@ public class MainController {
 	@GetMapping("/profile")
 	public String profile(){
 		return "profile";
+	}
+	
+	@GetMapping("/registrations")
+	public String registrations(Model model){
+		model.addAttribute("users", mainService.getUsers());
+		return "registrations";
 	}
 	
 	@PostMapping("/new")
@@ -112,21 +112,23 @@ public class MainController {
 		
 		if( result.equals("userActivated") )
 			log.debug("regisztráció aktiválva!");
-		
-		return "redirect:/auth/login?activationsuccess";
+
+		return "redirect:/";
 	}
 	
 	@PostMapping("/unlock/accept/{id}")
-	public String unlockAccept(@PathVariable(value="id") String id, @ModelAttribute User user, Model model) {
+	public String unlockAccept(@PathVariable(value="id") String id) {
 		Long userid = Long.parseLong(id);
 		userService.unlockUser(userid);
+		log.debug("felhasználói fiók feloldva!");
 		return "redirect:/registrations";
 	}
 	
 	@PostMapping("/unlock/decline/{id}")
-	public String unlockDecline(@PathVariable(value="id") String id, @ModelAttribute User user, Model model) {
+	public String unlockDecline(@PathVariable(value="id") String id) {
 		Long userid = Long.parseLong(id);
 		userService.deleteUser(userid);
+		log.debug("felhasználói fiók törölve!");
 		return "redirect:/registrations";
 	}
 	

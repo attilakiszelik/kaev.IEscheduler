@@ -22,7 +22,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	User findByActivation_key(@Param("activation_key") String activation_key);
 	
 	@Query(
-	value = "SELECT * FROM USERS u WHERE u.LOCKED = true", 
+	value = "SELECT * FROM USERS u WHERE u.LOCKED = true AND u.ENABLED = true", 
 	nativeQuery = true)
 	List<User> findAllLocked();
 	

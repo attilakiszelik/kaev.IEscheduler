@@ -16,6 +16,7 @@ public class EmailService {
 	private JavaMailSender javaMailSender;
 	private String username;
 	private String activationURL="http://localhost:9000/activation/";
+	private String loginURL="http://localhost:9000/login";
 	private String admin = "attila.kiszelik@gmail.com";
 	
 	@Autowired
@@ -69,7 +70,7 @@ public class EmailService {
 		} catch (Exception e) {
 			log.error("Hiba e-mail küldéskor: " + e);
 		}
-		
+/*		
 		try {
 			message = new SimpleMailMessage();
 			message.setFrom(username);
@@ -86,7 +87,7 @@ public class EmailService {
 		} catch (Exception e) {
 			log.error("Hiba e-mail küldéskor: " + e);
 		}
-		
+*/		
 	}
 	
 	public void sendUnlMessage(String name, String email) {
@@ -99,7 +100,9 @@ public class EmailService {
 			message.setSubject("Felhasználói fiók jóváhagyása");
 			message.setText("Kedves " + name + "!\n"
 							+ "\n"
-							+ "Regisztrációd jóváhagyásra került az Inter-Épfu Kft. által, most már használhatod az időpont foglaló rendszert!\n"
+							+ "Regisztrációd jóváhagyásra került az Inter-Épfu Kft. által, az alábbi linkre kattintva most már használhatod az időpont foglaló rendszert!\n"
+							+ "\n"
+							+ loginURL + "\n" 
 							+ "\n"
 							+ "Üdvözlettel,\n"
 							+ "az Inter-Épfu csapata");
