@@ -129,6 +129,14 @@ public class User {
 	public void setLocked(boolean locked) {
 		this.locked = locked;
 	}
+	
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 
 	@Override
 	public String toString() {
@@ -137,11 +145,11 @@ public class User {
 	}
 	
 	//method
-/*	public void addRoles(String roleName) {
+	public void addRoles(String roleName) {
 		if(this.roles==null||this.roles.isEmpty())
 			this.roles=new HashSet<>();
 			this.roles.add(new Role(roleName));
-		}
 	}
-*/	
+
 }
+

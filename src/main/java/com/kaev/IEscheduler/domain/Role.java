@@ -23,7 +23,11 @@ public class Role {
 	private Set<User> users = new HashSet<User>();
 
 	//constructor
-	private Role() {
+	public Role() {
+		super();
+	}
+	
+	public Role(String roleName) {
 		super();
 	}
 

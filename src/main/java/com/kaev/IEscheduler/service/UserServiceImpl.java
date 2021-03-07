@@ -1,8 +1,10 @@
 package com.kaev.IEscheduler.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +23,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	private UserRepository userRepo;
 	private RoleRepository roleRepo;
 	private EmailService emailService;
-	private final String USER_ROLE = "USER";
+	private String USER_ROLE = "USER";
 	
 	@Autowired
 	public UserServiceImpl (UserRepository userRepo,RoleRepository roleRepo) {
@@ -59,7 +61,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		User userCheck = userRepo.findByEmail(user.getEmail()) ;
 		
 		if (userCheck!=null) return "userAlreadyExists";
-/*		
+		
 		Role userRole = roleRepo.findByRole(USER_ROLE);
 		
 		if (userRole != null) {
@@ -67,7 +69,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		}else {
 			user.addRoles(USER_ROLE);
 		}
-*/		
+		
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		user.setActivation_key(generateActivation_Key());
 		user.setEnabled(false);
