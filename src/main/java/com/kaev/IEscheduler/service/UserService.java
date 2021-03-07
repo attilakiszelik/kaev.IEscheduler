@@ -1,8 +1,12 @@
 package com.kaev.IEscheduler.service;
 
+import java.util.List;
+
 import com.kaev.IEscheduler.domain.User;
 
 public interface UserService {
+	
+	public List<User> getLockedUsers();
 
 	public User findByEmail(String email);
 

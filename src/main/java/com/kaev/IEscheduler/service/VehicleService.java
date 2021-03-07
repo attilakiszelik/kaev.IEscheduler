@@ -3,14 +3,13 @@ package com.kaev.IEscheduler.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.kaev.IEscheduler.domain.User;
 import com.kaev.IEscheduler.domain.Vehicle;
 import com.kaev.IEscheduler.repository.UserRepository;
 import com.kaev.IEscheduler.repository.VehicleRepository;
 
 @Service
-public class MainService {
+public class VehicleService {
 	
 	private VehicleRepository vehicleRepo;
 	private UserRepository userRepo;
@@ -59,13 +58,5 @@ public class MainService {
 		vehicleRepo.save(vehicle);
 		
 	}
-
-	public List<User> getUsers() {
-		
-		return userRepo.findAllLocked();
-		
-	}
-	
-	
 	
 }

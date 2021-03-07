@@ -1,10 +1,10 @@
 package com.kaev.IEscheduler.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,15 +18,15 @@ import com.kaev.IEscheduler.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService{
 
-	private UserRepository userRepository;
-	private RoleRepository roleRepository;
+	private UserRepository userRepo;
+	private RoleRepository roleRepo;
 	private EmailService emailService;
 	private final String USER_ROLE = "USER";
 	
 	@Autowired
-	public UserServiceImpl (UserRepository userRepository,RoleRepository roleRepository) {
-		this.userRepository = userRepository;
-		this.roleRepository = roleRepository;
+	public UserServiceImpl (UserRepository userRepo,RoleRepository roleRepo) {
+		this.userRepo = userRepo;
+		this.roleRepo = roleRepo;
 	}
 	
 	@Autowired	
@@ -35,8 +35,13 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	}
 	
 	@Override
+	public List<User> getLockedUsers() {
+		return userRepo.findAllLocked();
+	}
+	
+	@Override
 	public User findByEmail(String email) {
-		return userRepository.findByEmail(email);
+		return userRepo.findByEmail(email);
 	}
 
 	@Override
@@ -51,11 +56,11 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	@Override
 	public String registerUser(User user) {
 		
-		User userCheck = userRepository.findByEmail(user.getEmail()) ;
+		User userCheck = userRepo.findByEmail(user.getEmail()) ;
 		
 		if (userCheck!=null) return "userAlreadyExists";
 		
-		Role userRole = roleRepository.findByRole(USER_ROLE);
+		Role userRole = roleRepo.findByRole(USER_ROLE);
 /*		
 		if (userRole != null) {
 			user.getRoles().add(userRole);
@@ -67,7 +72,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		user.setActivation_key(generateActivation_Key());
 		user.setEnabled(false);
 		user.setLocked(true);
-		userRepository.save(user);
+		userRepo.save(user);
 		
 		emailService.sendRegMessage(user.getName(), user.getEmail(), user.getActivation_key());
 	
@@ -92,13 +97,13 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	@Override
 	public String activateUser(String activation_key) {
 		
-		User user = userRepository.findByActivation_key(activation_key);
+		User user = userRepo.findByActivation_key(activation_key);
 		
 		if(user==null) return "userNotFound";
 		
 		user.setActivation_key("already_activated");
 		user.setEnabled(true);
-		userRepository.save(user);
+		userRepo.save(user);
 		
 		emailService.sendActMessage(user.getName(), user.getEmail());
 		
@@ -108,11 +113,11 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	@Override
 	public String unlockUser(Long userid) {
 
-		Optional<User> optionalUser = userRepository.findById(userid);
+		Optional<User> optionalUser = userRepo.findById(userid);
 		User user = optionalUser.get();
 		
 		user.setLocked(false);
-		userRepository.save(user);
+		userRepo.save(user);
 		
 		emailService.sendUnlMessage(user.getName(), user.getEmail());
 		
@@ -122,10 +127,10 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	@Override
 	public String deleteUser(Long userid) {
 		
-		Optional<User> optionalUser = userRepository.findById(userid);
+		Optional<User> optionalUser = userRepo.findById(userid);
 		User user = optionalUser.get();
 		
-		userRepository.delete(user);
+		userRepo.delete(user);
 		
 		emailService.sendDelMessage(user.getName(), user.getEmail());
 		
