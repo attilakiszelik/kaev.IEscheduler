@@ -2,11 +2,11 @@ package com.kaev.IEscheduler.domain;
 
 import java.sql.Time;
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity(name="Events")
 public class Event {
@@ -16,6 +16,7 @@ public class Event {
 	private long id;
 	private Date date;
 	private Time time;
+	@ManyToOne
 	private Vehicle vehicle;
 	
 	//constructors

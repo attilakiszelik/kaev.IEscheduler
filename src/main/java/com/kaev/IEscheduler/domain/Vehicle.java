@@ -1,10 +1,16 @@
 package com.kaev.IEscheduler.domain;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 
 @Entity(name="Vehicles")
 public class Vehicle {
@@ -19,16 +25,21 @@ public class Vehicle {
 	private Integer yop; //year of production
 	@ManyToOne
 	private User owner;
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)	
+	@JoinTable(
+			name="vehicles_events",
+			joinColumns={@JoinColumn(name="vehicle_id")},
+			inverseJoinColumns={@JoinColumn(name="event_id")}			
+			)
+	private List<Event> events;
 
 	//constructors
-	
-	//->private constructor to read from db
 	public Vehicle() {
-
+		super();
 	}
 	
-	//->public constructor (without id!) to write into db
 	public Vehicle(boolean deleted, String regnum, String man, String type, Integer yop, User owner) {
+		super();
 		this.deleted = deleted;
 		this.regnum = regnum;
 		this.man = man;

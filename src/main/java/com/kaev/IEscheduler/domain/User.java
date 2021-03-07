@@ -1,6 +1,9 @@
 package com.kaev.IEscheduler.domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -36,7 +40,7 @@ public class User {
 	
 	@Column(nullable=false)
 	private boolean locked;
-/*
+	
 	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)	
 	@JoinTable(
 			name="users_roles",
@@ -44,18 +48,17 @@ public class User {
 			inverseJoinColumns={@JoinColumn(name="role_id")}			
 			)
 	private Set<Role> roles = new HashSet<Role>();
-*/	
+	
 	@OneToMany (mappedBy = "owner")
 	private List<Vehicle> vehicles;
 
 	//constructors
-	  //private constructor to read from db
 	public User() {
-	
+		super();
 	}
 	
-	  //public constructor (without id!) to write into db
 	public User(String name, List<Vehicle> vehicles, String email, String password) {
+		super();
 		this.name = name;
 		this.vehicles = vehicles;
 		this.email = email;

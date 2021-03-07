@@ -19,12 +19,12 @@ public class Role {
 	@Column(nullable=false)
 	private String role;
 	
-//	@ManyToMany (mappedBy = "roles")
-//	private Set<User> users = new HashSet<User>();
+	@ManyToMany (mappedBy = "roles")
+	private Set<User> users = new HashSet<User>();
 
 	//constructor
 	private Role() {
-		
+		super();
 	}
 
 	//getters and setters	
@@ -43,7 +43,7 @@ public class Role {
 	public void setRole(String role) {
 		this.role = role;
 	}
-/*
+
 	public Set<User> getUsers() {
 		return users;
 	}
@@ -51,12 +51,11 @@ public class Role {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
-*/
+
 	//toString	
 	@Override
 	public String toString() {
-//		return "Role [id=" + id + ", role=" + role + ", users=" + users + "]";
-		return "Role [id=" + id + ", role=" + role + "]";
+		return "Role [id=" + id + ", role=" + role + ", users=" + users + "]";
 	}
 	
 }
