@@ -48,8 +48,7 @@
 				<a class="nav-link" href="/scheduler">Időpontfoglalás</a>
 				<a class="nav-link" href="/vehicles">Járművek</a>
 				<a class="nav-link" href="/profile">Profil</a>
-				<!--sec:authorize="hasRole('ADMIN')"-->
-				<a class="nav-link" href="/registrations">Regisztrációk jóváhagyása</a>
+				<a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/registrations">Regisztrációk jóváhagyása</a>
 				<form sec:authorize="isAuthenticated()" id="formLogout" th:action="@{/logout}" method="post">
 					<a class="nav-link" href="javascript:{}" onclick="document.getElementById('formLogout').submit(); return false;"><i class="fas fa-sign-out-alt"></i></a>
 				</form>	
@@ -57,8 +56,8 @@
 
 			<div class="">
 				<a>bejelentkezve: <span sec:authentication="name"></span></a>
+				<a>hasAuthority -> <span sec:authorize="hasAuthority('USER')">USER</span><span sec:authorize="hasAuthority('ADMIN')" >ADMIN</span></a>
 			</div>
-				
 
 		</div>
 		
