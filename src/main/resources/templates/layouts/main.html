@@ -17,54 +17,104 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
 	
 	<!-- myStyleSheet -->
-	<link rel="stylesheet" href="css/myStyleSheet.css">
+	<link rel="stylesheet" href="css/mainStyleSheet.css">
 	
 </head>
 
 <body>
 
-	<!--test media size
-	<div class="container-fluid mediasizetester">
-		<div class="d-block d-sm-none">XS</div>
-		<div class="d-none d-sm-block d-md-none">SM</div>
-		<div class="d-none d-md-block d-lg-none">MD</div>
-		<div class="d-none d-lg-block d-xl-none">LG</div>
-		<div class="d-none d-xl-block">XL</div>
-	</div>
-	-->
+	<div class="container-fluid wrapper">
 	
-	<nav class="navbar navbar-expand-md navbar-light shadow p-3 mb-5 bg-body rounded"> 
-		
-		<a class="navbar-brand" href="#">
-			<img src="images/logo.jpg" alt="">
-		</a>
-
-		<button class="navbar-toggler" href="#navbarNav" data-bs-toggle="collapse" aria-expanded="false" aria-controls="navbarNav">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="navbar-collapse collapse" id="navbarNav">
-			<div class="navbar-nav">			
-				<a class="nav-link" href="/scheduler">Időpontfoglalás</a>
-				<a class="nav-link" href="/vehicles">Járművek</a>
-				<a class="nav-link" href="/profile">Profil</a>
-				<a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/registrations">Regisztrációk jóváhagyása</a>
-				<form sec:authorize="isAuthenticated()" id="formLogout" th:action="@{/logout}" method="post">
-					<a class="nav-link" href="javascript:{}" onclick="document.getElementById('formLogout').submit(); return false;"><i class="fas fa-sign-out-alt"></i></a>
-				</form>	
-			</div>
-
-			<div class="">
-				<a>bejelentkezve: <span sec:authentication="name"></span></a>
-				<a>hasAuthority -> <span sec:authorize="hasAuthority('USER')">USER</span><span sec:authorize="hasAuthority('ADMIN')" >ADMIN</span></a>
-			</div>
-
+		<!--
+		<div class="user">
+			<a>bejelentkezve: </a><span sec:authentication="name"></span>
+			<a>hasAuthority: </a><span sec:authorize="hasAuthority('USER')">USER</span><span sec:authorize="hasAuthority('ADMIN')" >ADMIN</span>
 		</div>
 		
-	</nav>
+		<div class="mediasize">
+			<a>media size: </a>
+				<span class="d-block d-sm-none">XS</span>
+				<span class="d-none d-sm-block d-md-none">S</span>
+				<span class="d-none d-md-block d-lg-none">MD</span>
+				<span class="d-none d-lg-block d-xl-none">LG</span>
+				<span class="d-none d-xl-block d-xxl-none">XL</span>
+				<span class="d-none d-xxl-block">XXL</span>
+		</div>
+		-->
+
+		<nav>
+
+			<img src="images/logo.jpg" alt="">
+			
+			<label for="mobile-menu" class="mobile-menu-button">
+				<span></span>
+				<span></span>
+				<span></span>
+			</label>
+			<input type="checkbox" id="mobile-menu">
+
+			<ul class="navigation">
+				<li>
+					<a href="/scheduler"><i class="fas fa-calendar-alt"></i> időpontfoglalás</a>
+				</li>
+				<li>
+					<a href="/vehicles"><i class="fas fa-truck-moving"></i> járművek</a>
+				</li>
+				<li>
+					<a href="/profile"><i class="fas fa-user"></i> profil</a>
+				</li>
+				<li>
+					<a href="/registrations" sec:authorize="hasAuthority('ADMIN')"><i class="fas fa-users"></i> regisztráció-jóváhagyás</a>
+				</li>
+				<li>
+					<form sec:authorize="isAuthenticated()" id="formLogout" th:action="@{/logout}" method="post">
+						<a href="javascript:{}" onclick="document.getElementById('formLogout').submit(); return false;"><i class="fas fa-sign-out-alt"></i> kilépés</a>
+					</form>
+				</li>
+			</ul>
+
+		</nav>
+			
+		<!-- page content -->
+		<div layout:fragment="content">
 		
-	<!-- page content -->
-	<div layout:fragment="content">
+		</div>
+		
+		<!--		
+		<div class="loremipsum">
+			<p>
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+			</p>
+			<p>
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+			</p>
+			<p>
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+			</p>
+			<p>
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+			</p>
+			<p>
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+			</p>
+			<p>
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+			</p>
+			<p>
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+			</p>
+			<p>
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+			</p>
+			<p>
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+			</p>
+			<p>
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+			</p>
+		</div>
+		-->
+		 
 	</div>
 
 	<!-- JavaScript // https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
