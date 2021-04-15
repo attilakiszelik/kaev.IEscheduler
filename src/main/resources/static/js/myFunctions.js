@@ -1,12 +1,18 @@
-//alert("I'm active");
-
-function newVehicle(){
-
-	var r = $('#regnum').val();
-	var m = $('#man option:selected').text();
-	var t = $('#type option:selected').text();
-	var y = $('#yop').val();
+function onload(){
 	
-	alert("forgalmi rendszám: " + r + ", gyártó: " + m + ", típus: " + t + ", gyártás éve: " + y);
+	var ids = [1, 2, 3, 4, 5];
+    
+    for (i = 0; i < ids.length; i++) { 
+    	$( "#modifyVehicle" + ids[i] + "row" ).toggle();
+    	$( "#deleteVehicle" + ids[i] + "row" ).toggle();
+	}
+    
+}
 
+function toggle_modifyRow(id){
+	$( "#" + id + "row" ).toggle();
+}
+
+function toggle_deleteRow(id){
+	$( "#" + id + "row" ).toggle();
 }
