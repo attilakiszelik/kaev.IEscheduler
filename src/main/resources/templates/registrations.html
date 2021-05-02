@@ -15,81 +15,67 @@
 
 </head>
 
-<body>
+<body onload="registrations_onload()">
 
 	<!-- page content -->
 	<div layout:fragment="content">
 	
-		<div class="container col-md-12 cont2">
-			<row>
-				<table class="table">
-					<thead>
-						<tr>
-							<title>Regisztrációk jóváhagyása</title>
-						</tr>
-						<tr class="d-flex">
-							<th class="col-4">felhasználó neve</th>
-							<th class="col-4">felhasználó e-mail címe</th>
-							<th class="col-4">jóváhagyás / elutasítás</th>
-						</tr>
-					</thead>
-					<tbody>
-						<table class="table" th:each="user : ${users}">
-							<thead>
-								<tr>
-									<th class="col-4" th:text="${user.name}"></th>
-									<th class="col-4" th:text="${user.email}"></th>
-									<th class="col-4">
-										<div class="button-group">
-											<!--
-											<button class="btn btn-success btn-sm" th:href="'#acceptUser' + ${user.id}" data-bs-toggle="collapse" aria-expanded="false" th:aria-controls="'#acceptUser' + ${user.id}"><i class="fas fa-check-square"> jóváhagyás</i></button>
-											<button class="btn btn-danger btn-sm" th:href="'#declineUser' + ${user.id}" data-bs-toggle="collapse" aria-expanded="false" th:aria-controls="'#declineUser' + ${user.id}"><i class="fas fa-times-circle"> elutasítás</i></button>
-											-->
-											<form action="#" th:action="@{/unlock/accept/{id}(id=${user.id})}" th:object="${user}" method="post">
-												<button type="submit" value="jóváhagyás" class="btn btn-success btn-med"><i class="fas fa-check-square"> jóváhagyás</i></button>
-											</form>
-											<form action="#" th:action="@{/unlock/decline/{id}(id=${user.id})}" th:object="${user}" method="post">
-												<button type="submit" value="elutasítás" class="btn btn-danger btn-med"><i class="fas fa-times-circle"> elutasítás</i></button>
-											</form>
-											
-										</div>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="collapse card" th:id="'#acceptUser' + ${user.id}">
-									<td>
-										<div class="card-header">
-											<h1>Biztosan jóváhagyod a regisztrációt?</h1>
-										</div>
-										<div class="card-body">
-											<form action="#" th:action="@{/unlock/accept/{id}(id=${user.id})}" th:object="${user}" method="post">
-												<button type="submit" value="igen" class="btn btn-success btn-med">igen</button>
-												<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
-											</form>
-										</div>
-									</td>
-								</tr>
-								<tr class="collapse card" th:id="'#declineUser' + ${user.id}">
-									<td>
-										<div class="card-header">
-											<h1>Biztosan elutasítod a regisztrációt?</h1>
-										</div>
-										<div class="card-body">
-											<form action="#" th:action="@{/unlock/decline/{id}(id=${user.id})}" th:object="${user}" method="post">
-												<button type="submit" value="igen" class="btn btn-success btn-med">igen</button>
-												<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
-											</form>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</tbody>
-				</table>
-			</row>	
+		<div class="registrations-table">
+			<table>
+
+				<tr class="table-title">
+					<th colspan="3">regisztrációk jóváhagyása</th>
+				</tr>
+				
+				<tr class="table-header">
+					<th class="col-1">felhasználó neve</th>
+					<th class="col-2">felhasználó e-mail címe</th>
+					<th class="col-3">jóváhagyás / elutasítás</th>
+				</tr>
+
+				<div th:each="user : ${users}">
+					<tr>
+						<td class="col-1" th:text="${user.name}"></td>
+						<td class="col-2" th:text="${user.email}"></td>
+						<td class="col-3">
+							<div class="button-group">
+								<button class="btn btn-success btn-med" th:id="'acceptUser' + ${user.id}" onClick="toggle_acceptRow(this.id)"><i class="fas fa-check-square"> jóváhagyás</i></button>
+								<button class="btn btn-danger btn-med" th:id="'declineUser' + ${user.id}" onClick="toggle_declineRow(this.id)"><i class="fas fa-times-circle"> elutasítás</i></button>
+							</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="collapse-card accept-user" th:id="'acceptUser' + ${user.id} + 'row'" colspan="3">
+							<div class="card-header">
+								<h5>Biztosan jóváhagyod a regisztrációt?</h5>
+							</div>
+							<div class="card-body">
+								<form action="#" th:action="@{/unlock/accept/{id}(id=${user.id})}" th:object="${user}" method="post">
+									<button type="submit" value="igen" class="btn btn-success btn-med">igen</button>
+									<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+								</form>
+							</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="collapse-card decline-user" th:id="'declineUser' + ${user.id} + 'row'" colspan="3">
+							<div class="card-header">
+								<h5>Biztosan elutasítod a regisztrációt?</h5>
+							</div>
+							<div class="card-body">
+								<form action="#" th:action="@{/unlock/decline/{id}(id=${user.id})}" th:object="${user}" method="post">
+									<button type="submit" value="igen" class="btn btn-success btn-med">igen</button>
+									<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+								</form>
+							</div>
+						</td>
+					</tr>
+						
+				</div>	
+			</table>
 		</div>
-	
 	</div>
 	
 </body>

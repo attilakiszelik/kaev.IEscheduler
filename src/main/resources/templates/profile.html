@@ -20,8 +20,78 @@
 	<!-- page content -->
 	<div layout:fragment="content">
 	
-		<h1>profil</h1>
-	
+		<div class="card profile-data">
+				
+			<div class="card-header">
+				<h5>Adatok</h5>
+			</div>
+		
+			<div class="card-body">
+			
+				<form>
+							
+					<p>név: <input class="form-control" type="text"/></p>
+					<p>cím: <input class="form-control" type="text"/></p>
+					<p>adószám: <input class="form-control" type="text"/></p>
+					<p>kapcsolattartó neve: <input class="form-control" type="text"/></p>
+					<p>kapcsolattartó telefonszáma: <input class="form-control" type="text"/></p>
+					<p>kapcsolattartó e-mail címe: <input class="form-control" type="text"/></p>
+					
+					<input type="submit" value="mentés" class="btn btn-primary btn-med"/>
+		
+				</form>
+			
+			</div>
+		
+
+		</div>
+
+		<br>
+
+		<div class="card profile-data">
+				
+			<div class="card-header">
+				<h5>Jelszó módosítása</h5>
+			</div>
+		
+			<div class="card-body">
+			
+				<form>
+							
+					<p>régi jelszó: <input class="form-control" type="text"/></p>
+					<p>új jelszó: <input class="form-control" type="text"/></p>
+					<p>új jelszó (ismét): <input class="form-control" type="text"/></p>
+					
+					<input type="submit" value="mentés" class="btn btn-primary btn-med"/>
+		
+				</form>
+			
+			</div>
+
+		</div>
+		
+		<br>
+
+		<div class="card profile-data">
+				
+			<div class="card-header">
+				<h5>Fiók törlése</h5>
+			</div>
+		
+			<div class="card-body">
+			
+				<form>
+							
+					<p>jelszó: <input class="form-control" type="text"/></p>
+					
+					<input type="submit" value="mentés" class="btn btn-primary btn-med"/>
+		
+				</form>
+			
+			</div>
+
+		</div>
+		
 	</div>
 	
 </body>

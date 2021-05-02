@@ -1,4 +1,4 @@
-/* általános formázások */
+/* ï¿½ltalï¿½nos formï¿½zï¿½sok */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 *
@@ -32,8 +32,16 @@ body{
 	color: black;
 	text-decoration: none;
 }
+.table-title{
+	background-color: rgb(32,98,152);
+	color: white;
+}
+.table-header{
+	background-color: rgb(202,169,117);
+	color:  rgba(0,0,0,.75);
+}
 
-/* main.htlm formázások */
+/* main.htlm formï¿½zï¿½sok */
 nav{
 	background-color: white;
 	margin-bottom: 50px;
@@ -120,7 +128,7 @@ nav i{
 	}
 }
 
-/* vehicles.html formázások */
+/* vehicles.html formï¿½zï¿½sok */
 .vehicle-new{
 	margin: 0 0 30px 0;
 }
@@ -136,6 +144,11 @@ nav i{
 .vehicle-new h5{
 	margin: 10px 0;
 	text-align: center;
+}
+
+.vehicle-modify p,
+.vehicle-delete p{
+	text-align: left;
 }
 
 .vehicle-table table{
@@ -173,7 +186,7 @@ nav i{
 	text-align: center;
 }
 
-/* scheduler.html formázások */
+/* scheduler.html formï¿½zï¿½sok */
 .dateselectorbox{
 	margin: 30px 0;
 	padding: 20px;
@@ -278,3 +291,32 @@ nav i{
 	border: none;
 	box-shadow: none;
 }
+
+/* registrations.html formï¿½zï¿½sok */
+.registrations-table table{
+	background-color: white;
+	border: 1px solid rgba(139,140,142,.5);
+	border-radius: 5px;
+	width: 100%;
+	box-shadow: 0 0 50px rgba(0,0,0,.5);
+}
+.registrations-table .col-1, 
+.registrations-table .col-2{
+	width: 37.5%;
+}
+.registrations-table .col-3{
+	text-align: center;
+}
+.registrations-table th, td{
+	height: 50px;
+	vertical-align: middle;
+	border: 1px solid rgba(139,140,142,.5);
+}
+.registrations-table th{
+	text-align: center
+}
+.registrations-table td{
+	text-align: left;
+	white-space: nowrap;
+}
+

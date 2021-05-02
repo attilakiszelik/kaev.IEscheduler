@@ -1,5 +1,9 @@
-function onload(){
+//VEHICLES
+
+function vehicles_onload(){
     
+    //httpGetAsync(theUrl, callback)
+
     var ids = [1, 2, 3, 4, 5];
     
     for (i = 0; i < ids.length; i++) { 
@@ -7,11 +11,19 @@ function onload(){
     	$( "#deleteVehicle" + ids[i] + "row" ).toggle();
 	}
     
-    document.getElementById('dateselector').value = new Date().toISOString().slice(0, 10);
-    setDays();
-    checkDays();
-    
 }
+
+/* https://stackoverflow.com/questions/247483/http-get-request-in-javascript
+function httpGetAsync(theUrl, callback){
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+*/
 
 function toggle_modifyRow(id){
 	$( "#" + id + "row" ).toggle();
@@ -19,6 +31,37 @@ function toggle_modifyRow(id){
 
 function toggle_deleteRow(id){
 	$( "#" + id + "row" ).toggle();
+}
+
+//REGISTRATIONS
+
+function registrations_onload(){
+
+    var ids = [2];
+    
+    for (i = 0; i < ids.length; i++) { 
+    	$( "#acceptUser" + ids[i] + "row" ).toggle();
+    	$( "#declineUser" + ids[i] + "row" ).toggle();
+	}
+
+}
+
+function toggle_acceptRow(id){
+	$( "#" + id + "row" ).toggle();
+}
+
+function toggle_declineRow(id){
+    $( "#" + id + "row" ).toggle();
+}
+
+//SCHEDULER
+
+function scheduler_onload(){
+    
+    document.getElementById('dateselector').value = new Date().toISOString().slice(0, 10);
+    setDays();
+    checkDays();
+    
 }
 
 function minusOneDay(){

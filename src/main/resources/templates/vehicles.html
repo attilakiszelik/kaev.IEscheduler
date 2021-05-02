@@ -15,7 +15,7 @@
 
 </head>
 
-<body onload="onload()">
+<body onload="vehicles_onload()">
 
 	<!-- page content -->
 	<div layout:fragment="content">
@@ -89,7 +89,10 @@
 		
 		<div class="vehicle-table">
 			<table>
-				<tr>
+				<tr class="table-title">
+					<th colspan="5">járművek</th>
+				</tr>
+				<tr class="table-header">
 					<th class="col-1">forgalmi rendszám</th>
 					<th class="col-2">gyártó</th>
 					<th class="col-3">típus</th>
@@ -110,13 +113,12 @@
 						</td>
 					</tr>
 					<tr>
-						<td th:id="'modifyVehicle' + ${vehicle.id} + 'row'" colspan="5">
-							<div class="header">
+						<td class="collapse-card vehicle-modify" th:id="'modifyVehicle' + ${vehicle.id} + 'row'" colspan="5">
+							<div class="card-header">
 								<h5>jármű módosítása</h5>
 							</div>
-							<div class="body">
+							<div class="card-body">
 								<form action="#" th:action="@{/update/{id}(id=${vehicle.id})}" th:object="${vehicle}" method="post">
-									<!-- itt th:field helyett id, name és th:value attribútomokat használok, hogy a mezők fel legyenek töltve az aktuális értékekkel -->
 									<p>forgalmi rendszám: <input class="form-control" type="text" id="regnum" name="regnum" th:value="*{regnum}"/></p>
 									<p>gyártó: <input class="form-control" type="text" id="man" name="man" th:value="*{man}"/></p>
 									<p>típus: <input class="form-control" type="text" id="type" name="type" th:value="*{type}"/></p>
@@ -128,11 +130,11 @@
 						</td>
 					</tr>
 					<tr>
-						<td th:id="'deleteVehicle' + ${vehicle.id} + 'row'" colspan="5">
-							<div class="header">
+						<td class="collapse-card vehicle-delete" th:id="'deleteVehicle' + ${vehicle.id} + 'row'" colspan="5">
+							<div class="card-header">
 								<h5>jármű törlése</h5>
 							</div>
-							<div class="body">
+							<div class="card-body">
 								<form action="#" th:action="@{/delete/{id}(id=${vehicle.id})}" th:object="${vehicle}" method="post">
 									<p>Biztosan törölni szeretnéd?</p>	
 									<button type="submit" value="törlés" class="btn btn-primary btn-med">törlés</button>
