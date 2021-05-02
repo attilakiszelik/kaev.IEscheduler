@@ -1,3 +1,4 @@
+/* általános formázások */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 *
@@ -6,7 +7,7 @@
 }
 body{
 	font-family: 'Roboto', sans-serif;
-	background-color: rgba(153, 204, 255,.15);
+	background-color: rgba(153, 204, 255,.25);
  	margin: 0;
 }
 .wrapper{
@@ -14,7 +15,7 @@ body{
 	min-width: 335px;
  	max-width: 1200px;	
 }
-/* main.html teszteléshez használt tag-jeinek formázása */
+
 .user{
 	text-align: center;
 	margin: 20px;
@@ -31,13 +32,11 @@ body{
 	color: black;
 	text-decoration: none;
 }
-p{
-	text-align: justify;
-}
+
 /* main.htlm formázások */
 nav{
 	background-color: white;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 	padding: 10px;
 	border-radius: 5px;
 	box-shadow: 0 0 50px rgba(0,0,0,.5);
@@ -81,6 +80,7 @@ nav i{
 	font-size: 15px;
 	color: rgb(202,169,117);
 }
+
 .mobile-menu-button + input[type = "checkbox"]{
 	display: none;
 }
@@ -119,55 +119,162 @@ nav i{
 		padding: 5px 5px;
 	}
 }
+
 /* vehicles.html formázások */
-.content-new{
+.vehicle-new{
 	margin: 0 0 30px 0;
 }
-.content-new span{
+.vehicle-new span{
 	color: rgb(59,173,226);
 	font-weight: 700;
 	font-size: 17px;
 }
-.content-new i{
+.vehicle-new i{
 	font-size: 15px;
 	color: rgb(202,169,117);
 }
-.content-new h5{
+.vehicle-new h5{
 	margin: 10px 0;
 	text-align: center;
 }
 
-.content-table table{
+.vehicle-table table{
 	width: 100%;
 	background-color: white;
 	border: 1px solid rgba(139,140,142,.5);
 }
-.content-table th, td{
+.vehicle-table th, td{
 	height: 50px;
 	vertical-align: middle;
 	border: 1px solid  rgba(139,140,142,.5);
 }
-.content-table th{
+.vehicle-table th{
 	text-align: center
 }
-.content-table td{
+.vehicle-table td{
 	text-align: right;
 	white-space: nowrap;
 }
-.content-table .col-1, .col-2, .col-3, .col-4{
+.vehicle-table .col-1, .col-2, .col-3, .col-4{
 	width: 20%;
 	padding: 0 15px;
 }
-.content-table .col-5{
+.vehicle-table .col-5{
 	text-align: center;
 	white-space: normal;
 	padding: 0 5px;
 }
-.content-table .col-5 button{
+.vehicle-table .col-5 button{
 	margin: 5px 0;
 	white-space: nowrap;
 }
-.content-table h5{
+.vehicle-table h5{
 	margin: 10px 0;
 	text-align: center;
+}
+
+/* scheduler.html formázások */
+.dateselectorbox{
+	margin: 30px 0;
+	padding: 20px;
+	background-color: white;
+	border: 3px ridge rgba(139,140,142,1);
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-evenly;
+}
+.dateselectorbox button{
+	padding: 0 25px;
+	margin: 0 5px;
+	border: none;
+	border-radius: 5px;
+	font-weight: 700;
+	color: rgb(32,98,152);
+	background-color: rgba(139,140,142,.5);
+	white-space: nowrap;
+}
+.dateselectorbox i{
+	color: rgb(202,169,117);
+}
+.dateselectorbox button:hover{
+	color: rgb(59,173,226);
+	border: 3px ridge rgba(139,140,142,.5);
+	box-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+
+.scheduler-table table{
+	border-collapse: separate;
+	border-spacing: 5px;
+	background-color: white;
+	border: 3px ridge rgba(139,140,142,1);
+	border-radius: 5px;
+	text-align: center;
+	width: 100%;
+	box-shadow: 0 0 50px rgba(0,0,0,.5);
+}
+.scheduler-table td,
+.scheduler-table th{
+	border: 1px solid rgba(139,140,142,.5);
+}
+.scheduler-table th{
+	background-color: rgb(32,98,152);
+	color: white;
+	font-weight: 700;
+}
+.scheduler-table td{
+	background-color: rgba(108, 209, 108, 0.5);
+}
+.scheduler-table td:hover{
+	border: 3px ridge rgba(139,140,142,.5);
+	box-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+.scheduler-table tr{
+	height: 60px;
+}
+.scheduler-table .row-title,
+.scheduler-table .row-date{
+	height: 30px;
+}
+.scheduler-table .row-date th{
+	color: rgb(202,169,117);
+	font-size: 400;
+}
+.scheduler-table .col-0{
+	width: 10%;
+}
+.scheduler-table .col-1, 
+.scheduler-table .col-2,
+.scheduler-table .col-3,
+.scheduler-table .col-4,
+.scheduler-table .col-5{
+	width: 18%;
+}
+
+.modal .close-button{
+	height: 30px;
+	width: 30px;
+	border: none;
+	font-size: 20px;
+	background-color:white;
+	color: black;
+}
+.modal .close-button:hover{
+	background-color: rgb(196, 14, 14);
+	color: white;
+}
+.modal p{
+	display: inline;
+	font-weight: 700;
+}
+.modal .datetime{
+	display: flex;
+	justify-content: space-around;
+}
+
+.scheduler-table .blocked{
+	background-color: rgba(139,140,142,.5);
+}
+.scheduler-table .blocked:hover{
+	border: none;
+	box-shadow: none;
 }

@@ -15,13 +15,152 @@
 
 </head>
 
-<body>
+<body onload="onload()">
 
 	<!-- page content -->
 	<div layout:fragment="content">
+
+		<div class="dateselectorbox">
+			<button onclick="minusOneDay()"><i class="fas fa-angle-left"></i><i class="fas fa-angle-left"></i>  -1 nap</button>
+			<div>
+				<input class="form-control" type="date" value="" id="dateselector">
+			</div>
+			<button onclick="plusOneDay()">+1 nap  <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></button>
+		</div>
+
+		<div class="scheduler-table">
+		
+			<table>
 	
-		<h1>időpontfoglalás</h1>
+				<tr class="row-title">
+					<th class="title" rowspan="2">időpont</th>
+					<th class="">hétfő</th>
+					<th class="">kedd</th>
+					<th class="">szerda</th>
+					<th class="">csütörtök</th>
+					<th class="">péntek</th>
+				</tr>
+				<tr class="row-date">
+					<th class="" id="day1"></th>
+					<th class="" id="day2"></th>
+					<th class="" id="day3"></th>
+					<th class="" id="day4"></th>
+					<th class="" id="day5"></th>
+				</tr>
+				<tr class="row-time1">
+					<th class="title">07:00</th>
+					<td class="" id="d1t1" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d2t1" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d3t1" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d4t1" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d5t1" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+				</tr>
+				<tr class="row-time2">
+					<th class="title">08:00</th>
+					<td class="" id="d1t2" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d2t2" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d3t2" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d4t2" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d5t2" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+				</tr>
+				<tr class="row-time3">
+					<th class="title">09:00</th>
+					<td class="" id="d1t3" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d2t3" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d3t3" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d4t3" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d5t3" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+				</tr>
+				<tr class="row-time4">
+					<th class="title">10:00</th>
+					<td class="" id="d1t4" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d2t4" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d3t4" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d4t4" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d5t4" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+				</tr>
+				<tr class="row-time5">
+					<th class="title">11:00</th>
+					<td class="" id="d1t5" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d2t5" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d3t5" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d4t5" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d5t5" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+				</tr>
+				<tr class="row-time6">
+					<th class="title">12:00</th>
+					<td class="" id="d1t6" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d2t6" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d3t6" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d4t6" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d5t6" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+				</tr>
+				<tr class="row-time7">
+					<th class="title">13:00</th>
+					<td class="" id="d1t7" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d2t7" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d3t7" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d4t7" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d5t7" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+				</tr>
+				<tr class="row-time8">
+					<th class="title">14:00</th>
+					<td class="" id="d1t8" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d2t8" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d3t8" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d4t8" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d5t8" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+				</tr>
+				<tr class="row-time9">
+					<th class="title">15:00</t>
+					<td class="" id="d1t9" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d2t9" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d3t9" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d4t9" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+					<td class="" id="d5t9" onClick="uploadModal(this.id)" data-bs-toggle="modal" data-bs-target="#Modal"></td>
+				</tr>
 	
+			</table>
+		
+		</div>
+		
+		<div class="modal" id="Modal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				
+				<div class="modal-content">
+				
+					<div class="modal-header">
+						<h5 class="modal-title" id="időpont foglalás">időpont foglalás</h5>
+						<button class="close-button" data-bs-dismiss="modal" aria-label="close">X</button>
+					</div>
+					
+					<div class="modal-body">
+						<form>
+							<div class="datetime mb-3">
+								<label class="date day-form-label">dátum: <p>#date</p></label>
+								<label class="time day-form-label">időpont: <p>#time</p></label>
+							</div>
+							<div class="mb-3">
+								<label for="vehicle" class="day-form-label">jármű:</label>
+								<input type="text" class="form-control" id="vehicle">
+							</div>
+							<div class="mb-3">
+								<label for="task" class="day-form-label">feladat:</label>
+								<textarea class="form-control" id="task"></textarea>
+							</div>
+						</form>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">mégse</button>
+						<button type="button" class="btn btn-primary">mentés</button>
+					</div>
+					
+				</div>
+				
+			</div>
+		</div>
+
 	</div>
 	
 </body>
