@@ -31,7 +31,7 @@
 			<div class="collapse card" id="addNewVehicle">
 	
 				<div class="card-header">
-					<h5>jármű hozzáadása</h5>
+					<h6>jármű hozzáadása</h6>
 				</div>
 	
 				<div class="card-body">
@@ -115,7 +115,7 @@
 					<tr>
 						<td class="collapse-card vehicle-modify" th:id="'modifyVehicle' + ${vehicle.id} + 'row'" colspan="5">
 							<div class="card-header">
-								<h5>jármű módosítása</h5>
+								<h6>jármű módosítása</h6>
 							</div>
 							<div class="card-body">
 								<form action="#" th:action="@{/update/{id}(id=${vehicle.id})}" th:object="${vehicle}" method="post">
@@ -123,8 +123,10 @@
 									<p>gyártó: <input class="form-control" type="text" id="man" name="man" th:value="*{man}"/></p>
 									<p>típus: <input class="form-control" type="text" id="type" name="type" th:value="*{type}"/></p>
 									<p>gyártás éve: <input class="form-control" type="text" id="yop" name="yop" th:value="*{yop}" /></p>
-									<button type="submit" value="mentés" class="btn btn-primary btn-med">mentés</button>
-									<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+									<div class="card-button-group">
+										<button type="submit" value="mentés" class="btn btn-primary btn-med">mentés</button>
+										<button type="reset" value="mégse" class="btn btn-danger btn-med" id="untog" onClick="untoggle(this.id)">mégse</button>
+									</div>
 								</form>
 							</div>
 						</td>
@@ -132,13 +134,15 @@
 					<tr>
 						<td class="collapse-card vehicle-delete" th:id="'deleteVehicle' + ${vehicle.id} + 'row'" colspan="5">
 							<div class="card-header">
-								<h5>jármű törlése</h5>
+								<h6>jármű törlése</h6>
 							</div>
 							<div class="card-body">
 								<form action="#" th:action="@{/delete/{id}(id=${vehicle.id})}" th:object="${vehicle}" method="post">
-									<p>Biztosan törölni szeretnéd?</p>	
-									<button type="submit" value="törlés" class="btn btn-primary btn-med">törlés</button>
-									<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+									<p>Biztosan törölni szeretnéd?</p>
+									<div class="card-button-group">
+										<button type="submit" value="törlés" class="btn btn-primary btn-med">törlés</button>
+										<button type="reset" value="mégse" class="btn btn-danger btn-med" id="untog" onClick="untoggle(this.id)">mégse</button>
+									</div>
 								</form>
 							</div>
 						</td>
@@ -146,31 +150,6 @@
 				</div>
 			</table>
 		</div>
-		
-		<!--
-		<table class="table table-bordered table-striped wrapper">
-	        <tr>
-	            <td>
-	                <button id="modbtn">Módosítás</button>
-	                <button id="delbtn">Törlés</button>
-	            </td>
-	        </tr>
-	        <tr>
-	            <td id="modrow">
-	                <p>Biztosan módosítani szeretnéd?</p>
-	                <button>Igen</button>
-	                <button>Mégse</button>
-	            </td>
-	        </tr>
-	        <tr>
-	            <td  id="delrow">
-	                <p>Biztosan törölni szeretnéd?</p>
-	                <button>Igen</button>
-	                <button>Mégse</button>
-	            </td>
-	        </tr>
-    	</table>
-    	 -->
 		
 	</div>
 		

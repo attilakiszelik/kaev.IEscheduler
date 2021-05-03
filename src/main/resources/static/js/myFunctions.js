@@ -1,3 +1,7 @@
+//GLOBAL VARIABLES
+
+var opened = 'nothing';
+
 //VEHICLES
 
 function vehicles_onload(){
@@ -26,11 +30,42 @@ function httpGetAsync(theUrl, callback){
 */
 
 function toggle_modifyRow(id){
-	$( "#" + id + "row" ).toggle();
+
+    if (opened != 'nothing') {
+
+        $( opened ).toggle();
+        $( "#" + id + "row" ).toggle();
+        opened = "#" + id + "row";
+
+    } else {
+
+        $( "#" + id + "row" ).toggle();
+        opened = "#" + id + "row";
+
+    }
 }
 
 function toggle_deleteRow(id){
-	$( "#" + id + "row" ).toggle();
+
+    if (opened != 'nothing') {
+
+        $( opened ).toggle();
+	    $( "#" + id + "row" ).toggle();
+        opened = "#" + id + "row";
+
+    } else {
+
+        $( "#" + id + "row" ).toggle();
+        opened = "#" + id + "row";  
+
+    }
+}
+
+function untoggle(id){
+
+    $("#" + id).parent().parent().parent().parent().toggle();
+    opened = 'nothing';    
+
 }
 
 //REGISTRATIONS

@@ -1,9 +1,10 @@
-/* �ltal�nos form�z�sok */
+/* általános formázások */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 *
 {
 	box-sizing: border-box;
+	text-shadow: 1px 1px 0.75px rgba(0,0,0,.5);
 }
 body{
 	font-family: 'Roboto', sans-serif;
@@ -37,11 +38,18 @@ body{
 	color: white;
 }
 .table-header{
-	background-color: rgb(202,169,117);
-	color:  rgba(0,0,0,.75);
+	background-color: rgb(59,173,226);
+	color: white;
 }
-
-/* main.htlm form�z�sok */
+.card-button-group{
+	display: flex;
+	justify-content: start;
+}
+.card-button-group button{
+	line-height: 1;
+	margin-right: 5px;
+}
+/* main.htlm formázások */
 nav{
 	background-color: white;
 	margin-bottom: 50px;
@@ -128,7 +136,7 @@ nav i{
 	}
 }
 
-/* vehicles.html form�z�sok */
+/* vehicles.html formázások */
 .vehicle-new{
 	margin: 0 0 30px 0;
 }
@@ -141,9 +149,10 @@ nav i{
 	font-size: 15px;
 	color: rgb(202,169,117);
 }
-.vehicle-new h5{
+.vehicle-new h6{
 	margin: 10px 0;
 	text-align: center;
+	font-weight: 700;
 }
 
 .vehicle-modify p,
@@ -174,19 +183,19 @@ nav i{
 }
 .vehicle-table .col-5{
 	text-align: center;
-	white-space: normal;
+	white-space: nowrap;
 	padding: 0 5px;
 }
 .vehicle-table .col-5 button{
 	margin: 5px 0;
-	white-space: nowrap;
 }
-.vehicle-table h5{
+.vehicle-table h6{
 	margin: 10px 0;
 	text-align: center;
+	font-weight: 700;
 }
 
-/* scheduler.html form�z�sok */
+/* scheduler.html formázások */
 .dateselectorbox{
 	margin: 30px 0;
 	padding: 20px;
@@ -292,7 +301,7 @@ nav i{
 	box-shadow: none;
 }
 
-/* registrations.html form�z�sok */
+/* registrations.html formázások */
 .registrations-table table{
 	background-color: white;
 	border: 1px solid rgba(139,140,142,.5);
@@ -300,12 +309,19 @@ nav i{
 	width: 100%;
 	box-shadow: 0 0 50px rgba(0,0,0,.5);
 }
+.registrations-table .col-1{
+	padding: 0 15px;
+}
 .registrations-table .col-1, 
 .registrations-table .col-2{
 	width: 37.5%;
 }
 .registrations-table .col-3{
 	text-align: center;
+}
+.registrations-table .col-3 button{
+	padding: 2.5px 5px;
+	white-space: nowrap;
 }
 .registrations-table th, td{
 	height: 50px;
@@ -318,5 +334,9 @@ nav i{
 .registrations-table td{
 	text-align: left;
 	white-space: nowrap;
+}
+.registrations-table h6{
+	margin: 10px 0;
+	font-weight: 700;
 }
 

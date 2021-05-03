@@ -48,12 +48,14 @@
 					<tr>
 						<td class="collapse-card accept-user" th:id="'acceptUser' + ${user.id} + 'row'" colspan="3">
 							<div class="card-header">
-								<h5>Biztosan jóváhagyod a regisztrációt?</h5>
+								<h6>Biztosan jóváhagyod a regisztrációt?</h6>
 							</div>
 							<div class="card-body">
 								<form action="#" th:action="@{/unlock/accept/{id}(id=${user.id})}" th:object="${user}" method="post">
-									<button type="submit" value="igen" class="btn btn-success btn-med">igen</button>
-									<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+									<div class="card-button-group">
+										<button type="submit" value="igen" class="btn btn-success btn-med">igen</button>
+										<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+									</div>
 								</form>
 							</div>
 						</td>
@@ -62,12 +64,14 @@
 					<tr>
 						<td class="collapse-card decline-user" th:id="'declineUser' + ${user.id} + 'row'" colspan="3">
 							<div class="card-header">
-								<h5>Biztosan elutasítod a regisztrációt?</h5>
+								<h6>Biztosan elutasítod a regisztrációt?</h6>
 							</div>
 							<div class="card-body">
 								<form action="#" th:action="@{/unlock/decline/{id}(id=${user.id})}" th:object="${user}" method="post">
-									<button type="submit" value="igen" class="btn btn-success btn-med">igen</button>
-									<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+									<div class="card-button-group">
+										<button type="submit" value="igen" class="btn btn-success btn-med">igen</button>
+										<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+									</div>
 								</form>
 							</div>
 						</td>
