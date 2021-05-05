@@ -1,33 +1,23 @@
 //GLOBAL VARIABLES
 
 var opened = 'nothing';
+var getVehiclesIds_Url = 'http://localhost:9000/getVehiclesIds';
 
 //VEHICLES
 
 function vehicles_onload(){
-    
-    //httpGetAsync(theUrl, callback)
 
-    var ids = [1, 2, 3, 4, 5];
-    
-    for (i = 0; i < ids.length; i++) { 
-    	$( "#modifyVehicle" + ids[i] + "row" ).toggle();
-    	$( "#deleteVehicle" + ids[i] + "row" ).toggle();
-	}
-    
+    $.ajax({ url: getVehiclesIds_Url,
+    		 dataType: 'json',
+    		 success: function(ids){
+			    for (i = 0; i < ids.length; i++) { 
+			    	$( "#modifyVehicle" + ids[i] + "row" ).toggle();
+			    	$( "#deleteVehicle" + ids[i] + "row" ).toggle();
+				}
+    		 },
+    });
+   
 }
-
-/* https://stackoverflow.com/questions/247483/http-get-request-in-javascript
-function httpGetAsync(theUrl, callback){
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-    xmlHttp.send(null);
-}
-*/
 
 function toggle_modifyRow(id){
 

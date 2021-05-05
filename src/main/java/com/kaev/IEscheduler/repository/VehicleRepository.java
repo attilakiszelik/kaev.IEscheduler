@@ -18,4 +18,9 @@ public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 	
 	Vehicle findById(long id);
 	
+	@Query(
+	value = "SELECT id FROM VEHICLES v WHERE v.deleted = false", 
+	nativeQuery = true)
+	long[] getIds();
+	
 }

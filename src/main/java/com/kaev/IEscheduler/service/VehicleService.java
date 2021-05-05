@@ -59,4 +59,11 @@ public class VehicleService {
 		
 	}
 	
+	public long[] getIds() {
+		
+		long [] ids = vehicleRepo.getIds();
+		return ids;
+		
+	}
+	
 }
