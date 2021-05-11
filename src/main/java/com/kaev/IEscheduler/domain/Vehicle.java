@@ -1,16 +1,21 @@
 package com.kaev.IEscheduler.domain;
 
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.JoinColumn;
+
+import com.kaev.IEscheduler.enums.vehicle_TYPE;
 
 @Entity(name="Vehicles")
 public class Vehicle {
@@ -21,7 +26,8 @@ public class Vehicle {
 	private boolean deleted;
 	private String regnum; //registration number
 	private String man; //manufacturer
-	private String type; //type
+	@Enumerated(EnumType.STRING)
+	private vehicle_TYPE type; //type
 	private Integer yop; //year of production
 	@ManyToOne
 	private User owner;
@@ -38,7 +44,7 @@ public class Vehicle {
 		super();
 	}
 	
-	public Vehicle(boolean deleted, String regnum, String man, String type, Integer yop, User owner) {
+	public Vehicle(boolean deleted, String regnum, String man, vehicle_TYPE type, Integer yop, User owner) {
 		super();
 		this.deleted = deleted;
 		this.regnum = regnum;
@@ -81,11 +87,11 @@ public class Vehicle {
 		this.man = man;
 	}
 
-	public String getType() {
+	public vehicle_TYPE getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(vehicle_TYPE type) {
 		this.type = type;
 	}
 

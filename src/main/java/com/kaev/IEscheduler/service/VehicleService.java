@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.kaev.IEscheduler.domain.User;
 import com.kaev.IEscheduler.domain.Vehicle;
+import com.kaev.IEscheduler.enums.vehicle_TYPE;
 import com.kaev.IEscheduler.repository.UserRepository;
 import com.kaev.IEscheduler.repository.VehicleRepository;
 
@@ -31,7 +32,7 @@ public class VehicleService {
 		
 	}
 	
-	public void newVehicle(boolean deleted, String regnum, String man, String type, Integer yop, long userid) {
+	public void newVehicle(boolean deleted, String regnum, String man, vehicle_TYPE type, Integer yop, long userid) {
 		
 		User owner =  userRepo.findById(userid);
 				
@@ -40,7 +41,7 @@ public class VehicleService {
 		
 	}
 	
-	public void updateVehicle(long vehicleid, String regnum, String man, String type, Integer yop) {
+	public void updateVehicle(long vehicleid, String regnum, String man, vehicle_TYPE type, Integer yop) {
 		
 		Vehicle vehicle = vehicleRepo.findById(vehicleid);
 		vehicle.setRegnum(regnum);
