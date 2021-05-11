@@ -2,6 +2,8 @@
 
 var opened = 'nothing';
 var getVehiclesIds_Url = 'http://localhost:9000/getVehiclesIds';
+var getVehiclesRegnums_Url = 'http://localhost:9000/getVehiclesRegnums';
+var getAvaiableServices_Url = 'http://localhost:9000/getAvaiableServices';
 
 //VEHICLES
 
@@ -102,6 +104,11 @@ function plusOneDay(){
     result.setDate(result.getDate() + 1);
     document.getElementById('dateselector').value = result.toISOString().slice(0, 10);
     setDays();
+    checkDays();
+}
+
+function datechanged(){
+	setDays();
     checkDays();
 }
 
@@ -309,6 +316,116 @@ function activateTD(day, time){
 
 function uploadModal(id){
 
-    alert(id);
+	//date
+	
+    var d = id.charAt(1); 
+    var day = document.getElementById('day' + d).innerText;
+    
+    document.getElementById('modal-date').innerText = day;
+    
+    //time
+    
+    var t = id.charAt(3);
+    switch (t) {
+	  case "1":
+	    time = "07:00";
+	    break;
+	  case "2":
+	    time = "08:00";
+	    break;
+	  case "3":
+	    time = "09:00";
+	    break;
+	  case "4":
+	    time = "10:00";
+	    break;
+	  case "5":
+	    time = "11:00";
+	    break;
+	  case "6":
+	    time = "12:00";
+	    break;
+	  case "7":
+	    time = "13:00";
+	    break;
+	  case "8":
+	    time = "14:00";
+	    break;
+	  case "9":
+	    time = "15:00";
+		break;
+	}
+	
+	document.getElementById('modal-time').innerText = time;
+	
+	//vehicle's regnums
+	
+	var vehicles = document.getElementById('modal-regnums');
+	
+	var r = ["válassz járművet", "ABC-123", "DEF-456", "GHI-789"];
+	
+    for (i = 0; i < r.length; i++) { 
+		var option = document.createElement("option");
+		option.text = r[i];
+		option.value = i;
+		vehicles.add(option);
+	}
+	
+	/*
+    $.ajax({ url: getVehiclesRegnums_Url,
+		 dataType: 'json',
+		 success: function(r){
+		    for (i = 0; i < r.length; i++) { 
+				var option = document.createElement("option");
+				option.text = r[i];
+				//TODO: option.value = ...;
+				vehicles.add(option);
+			}
+		 },
+	});
+	*/
+	
+	//avaiable services
+	
+	var services = document.getElementById('modal-services');
+	
+	var s = ["válassz szolgáltatást", "műszaki vizsga felkészítés", "olajcsere", "fékbetét csere", "klíma töltés", "karosszéria javítás"];
+	
+	for (i = 0; i < s.length; i++) { 
+		var option = document.createElement("option");
+		option.text = s[i];
+		option.value = i;
+		services.add(option);
+	}
+
+	/*	
+    $.ajax({ url: getAvaiableServices_Url,
+	 dataType: 'json',
+	 success: function(s){
+	    for (i = 0; i < s.length; i++) { 
+			var option = document.createElement("option");
+			option.text = s[i];
+			//TODO: option.value = ...;
+			services.add(option);
+		}
+	 },
+	});
+	*/	
+	
+}
+
+function deloadModal(){
+
+	var vehicles = document.getElementById('modal-regnums');
+	
+    for (i = vehicles.length; i > 0; i--) { 
+		vehicles.remove(vehicles.i);
+	}
+	
+	var services = document.getElementById('modal-services');
+	
+	for (i = services.length; i > 0; i--) { 
+		services.remove(services.i);
+	}
 
 }

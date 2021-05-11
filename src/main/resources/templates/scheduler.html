@@ -23,7 +23,7 @@
 		<div class="dateselectorbox">
 			<button onclick="minusOneDay()"><i class="fas fa-angle-left"></i><i class="fas fa-angle-left"></i>  -1 nap</button>
 			<div>
-				<input class="form-control" type="date" value="" id="dateselector">
+				<input class="form-control" type="date" value="" id="dateselector" onchange="datechanged()">
 			</div>
 			<button onclick="plusOneDay()">+1 nap  <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></button>
 		</div>
@@ -131,28 +131,30 @@
 				
 					<div class="modal-header">
 						<h5 class="modal-title" id="időpont foglalás">időpont foglalás</h5>
-						<button class="close-button" data-bs-dismiss="modal" aria-label="close">X</button>
+						<button class="close-button" data-bs-dismiss="modal" aria-label="close" onClick="deloadModal()">X</button>
 					</div>
 					
 					<div class="modal-body">
 						<form>
 							<div class="datetime mb-3">
-								<label class="date day-form-label">dátum: <p>#date</p></label>
-								<label class="time day-form-label">időpont: <p>#time</p></label>
+								<label for="modal-date">dátum: <p id="modal-date"></p></label>
+								<label for="modal-time">időpont: <p id="modal-time"></p></label>
 							</div>
 							<div class="mb-3">
-								<label for="vehicle" class="day-form-label">jármű:</label>
-								<input type="text" class="form-control" id="vehicle">
+								<label for="modal-vehicle">jármű:</label>
+								<select class="form-control" name="regnums" id="modal-regnums">
+								</select>
 							</div>
 							<div class="mb-3">
-								<label for="task" class="day-form-label">feladat:</label>
-								<textarea class="form-control" id="task"></textarea>
+								<label for="modal-task">feladat:</label>
+								<select class="form-control" name="services" id="modal-services">
+								</select>
 							</div>
 						</form>
 					</div>
 					
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">mégse</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick="deloadModal()">mégse</button>
 						<button type="button" class="btn btn-primary">mentés</button>
 					</div>
 					
