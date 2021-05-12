@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.kaev.IEscheduler.domain.Event;
 //import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.RequestMapping;
 import com.kaev.IEscheduler.domain.Vehicle;
@@ -32,7 +34,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/scheduler")
-	public String scheduler(){
+	public String scheduler(Model model){
+		model.addAttribute("event",new Event());
 		return "scheduler";
 	}
 	

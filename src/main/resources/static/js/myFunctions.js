@@ -362,7 +362,7 @@ function uploadModal(id){
 	
 	var vehicles = document.getElementById('modal-regnums');
 	
-	var r = ["válassz járművet", "ABC-123", "DEF-456", "GHI-789"];
+	var r = ["ABC-123", "ABC-456", "ABC-789"];
 	
     for (i = 0; i < r.length; i++) { 
 		var option = document.createElement("option");
@@ -389,7 +389,7 @@ function uploadModal(id){
 	
 	var services = document.getElementById('modal-services');
 	
-	var s = ["válassz szolgáltatást", "műszaki vizsga felkészítés", "olajcsere", "fékbetét csere", "klíma töltés", "karosszéria javítás"];
+	var s = ["műszaki vizsga felkészítés", "olajcsere", "fékbetét csere", "klíma töltés", "karosszéria javítás", "futómű beállítás"];
 	
 	for (i = 0; i < s.length; i++) { 
 		var option = document.createElement("option");

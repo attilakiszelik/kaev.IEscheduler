@@ -134,29 +134,33 @@
 						<button class="close-button" data-bs-dismiss="modal" aria-label="close" onClick="deloadModal()">X</button>
 					</div>
 					
-					<div class="modal-body">
-						<form>
+					<form action="#" th:action="@{/newEvent}" th:object="${event}" method="post">
+					
+						<div class="modal-body">
+						
 							<div class="datetime mb-3">
-								<label for="modal-date">dátum: <p id="modal-date"></p></label>
-								<label for="modal-time">időpont: <p id="modal-time"></p></label>
+								<label for="modal-date">dátum: </label><p id="modal-date" th:field="${date != null} ? ${*date} : 'date is null'"></p>
+								<label for="modal-time">időpont: </label><p id="modal-time" th:field="${time != null} ? ${*time} : 'time is null'"> </p>
 							</div>
 							<div class="mb-3">
 								<label for="modal-vehicle">jármű:</label>
-								<select class="form-control" name="regnums" id="modal-regnums">
+								<select class="form-control" name="regnums" id="modal-regnums" th:field="*{vehicle}">
 								</select>
 							</div>
 							<div class="mb-3">
 								<label for="modal-task">feladat:</label>
-								<select class="form-control" name="services" id="modal-services">
+								<select class="form-control" name="services" id="modal-services" th:field="*{service}">
 								</select>
 							</div>
-						</form>
-					</div>
+						
+						</div>
 					
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick="deloadModal()">mégse</button>
-						<button type="button" class="btn btn-primary">mentés</button>
-					</div>
+						<div class="modal-footer">
+							<input type="reset" class="btn btn-danger btn-med"  value="mégse" data-bs-dismiss="modal" onClick="deloadModal()"/>
+							<input type="submit" class="btn btn-primary btn-med" value="foglalás" data-bs-dismiss="modal" onClick="deloadModal()"/>
+						</div>
+					
+					</form>
 					
 				</div>
 				

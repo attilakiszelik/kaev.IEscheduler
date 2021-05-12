@@ -3,27 +3,33 @@ package com.kaev.IEscheduler.enums;
 import java.util.stream.Stream;
 
 public enum service_TYPE {
-
-	MUSZAKIVIZSGAFELKESZITES(2),
-	OLAJCSERE(1),
-	FEKBETETCSERE(1),
-	KLIMATOLTES(1),
-	KAROSSZERIAJAVITAS(5),
-	FUTOMUBEALLITAS(3);
 	
+	MUSZAKIVIZSGAFELKESZITES("műszaki vizsga felkészítés", 2),
+	OLAJCSERE("olajcsere", 2),
+	FEKBETETCSERE("fékbetét csere", 1),
+	KLIMATOLTES("klíma töltés", 1),
+	KAROSSZERIAJAVITAS("karosszéria javítás", 5),
+	FUTOMUBEALLITAS("futómű beállítás", 3);
+	
+	private String text;
 	private int hour;
 	
-	private service_TYPE(int hour) {
+	private service_TYPE(String text, int hour) {
+		this.text = text;
 		this.hour = hour;
 	}
 	
-    public int getService_TYPE() {
+    public String getTextOfService_TYPE() {
+        return text;
+    }
+	
+    public int getHourOfService_TYPE() {
         return hour;
     }
 
-    public static service_TYPE of(int hour) {
+    public static service_TYPE of(String text) {
         return Stream.of(service_TYPE.values())
-          .filter(p -> p.getService_TYPE() == hour)
+          .filter(p -> p.getTextOfService_TYPE().equals(text))
           .findFirst()
           .orElseThrow(IllegalArgumentException::new);
     }
