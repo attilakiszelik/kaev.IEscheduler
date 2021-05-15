@@ -84,24 +84,31 @@ function toggle_declineRow(id){
 //SCHEDULER
 
 function scheduler_onload(){
+
+	var dayToSet = new Date();
+	var today = new Date();
+	
+	if(today.getDay() == 6) dayToSet.setDate(today.getDate() + 2)
+	if(today.getDay() == 0) dayToSet.setDate(today.getDate() + 1)
     
-    document.getElementById('dateselector').value = new Date().toISOString().slice(0, 10);
+    document.getElementById('dateselector').value = dayToSet.toISOString().slice(0, 10);
+    
     setDays();
     checkDays();
     
 }
 
-function minusOneDay(){
+function minusOneWeek(){
     var result = new Date(document.getElementById('dateselector').value);
-    result.setDate(result.getDate() - 1);
+    result.setDate(result.getDate() - 7);
     document.getElementById('dateselector').value = result.toISOString().slice(0, 10);
     setDays();
     checkDays();
 }
 
-function plusOneDay(){
+function plusOneWeek(){
     var result = new Date(document.getElementById('dateselector').value);
-    result.setDate(result.getDate() + 1);
+    result.setDate(result.getDate() + 7);
     document.getElementById('dateselector').value = result.toISOString().slice(0, 10);
     setDays();
     checkDays();
