@@ -134,33 +134,43 @@
 						<button class="close-button" data-bs-dismiss="modal" aria-label="close" onClick="deloadModal()">X</button>
 					</div>
 					
-					<form action="#" th:action="@{/newEvent}" th:object="${event}" method="post">
+					<div class="modal-body">
 					
-						<div class="modal-body">
-						
+						<form action="#" th:action="@{/newEvent}" th:object="${event}" method="post" id="event-details">
+							 
 							<div class="datetime mb-3">
-								<label for="modal-date">dátum: </label><p id="modal-date" th:field="${date != null} ? ${*date} : 'date is null'"></p>
-								<label for="modal-time">időpont: </label><p id="modal-time" th:field="${time != null} ? ${*time} : 'time is null'"> </p>
+								<label for="modal-date">dátum: </label><input id="modal-date" type="date" th:field="*{date}" readonly="readonly"/>
+								<label for="modal-time">időpont: </label><input id="modal-time" type="text" th:field="*{time}" readonly="readonly"/>
 							</div>
+							
 							<div class="mb-3">
-								<label for="modal-vehicle">jármű:</label>
-								<select class="form-control" name="regnums" id="modal-regnums" th:field="*{vehicle}">
+								<label for="modal-regnums">jármű:</label>
+								<select class="form-control" name="selectedRegnum" id="selectedRegnum">
+									<option th:each="vehicle : ${vehicleList}" 
+	          								th:value="${vehicle.getRegnum()}" 
+	          								th:text="${vehicle.getRegnum()}">
+	          						</option>
 								</select>
 							</div>
+							
 							<div class="mb-3">
-								<label for="modal-task">feladat:</label>
-								<select class="form-control" name="services" id="modal-services" th:field="*{service}">
+								<label for="modal-services">feladat:</label>
+								<select class="form-control" name="selectedService" id="selectedService">
+									<option th:each="service : ${serviceList}" 
+	          								th:value="${service.text}" 
+	          								th:text="${service.text}">
+	          						</option>
 								</select>
 							</div>
-						
-						</div>
+							 
+						</form>
 					
-						<div class="modal-footer">
-							<input type="reset" class="btn btn-danger btn-med"  value="mégse" data-bs-dismiss="modal" onClick="deloadModal()"/>
-							<input type="submit" class="btn btn-primary btn-med" value="foglalás" data-bs-dismiss="modal" onClick="deloadModal()"/>
-						</div>
-					
-					</form>
+					</div>
+				
+					<div class="modal-footer">
+						<input type="reset" class="btn btn-danger btn-med"  value="mégse" data-bs-dismiss="modal" onClick="deloadModal()"/>
+						<input type="submit" class="btn btn-primary btn-med" value="foglalás" form="event-details" onClick="deloadModal()"/>
+					</div>
 					
 				</div>
 				

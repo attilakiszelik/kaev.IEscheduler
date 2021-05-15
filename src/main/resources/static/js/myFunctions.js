@@ -319,9 +319,9 @@ function uploadModal(id){
 	//date
 	
     var d = id.charAt(1); 
-    var day = document.getElementById('day' + d).innerText;
+    var day = new Date(document.getElementById('day' + d).innerHTML);
     
-    document.getElementById('modal-date').innerText = day;
+    document.getElementById('modal-date').value = day.toISOString().slice(0, 10);
     
     //time
     
@@ -356,10 +356,13 @@ function uploadModal(id){
 		break;
 	}
 	
-	document.getElementById('modal-time').innerText = time;
+	document.getElementById('modal-time').value = time;
 	
 	//vehicle's regnums
 	
+		//TODO: <option disabled>Please select...</option>
+	
+	/*	- feltöltés beégetett tömbből
 	var vehicles = document.getElementById('modal-regnums');
 	
 	var r = ["ABC-123", "ABC-456", "ABC-789"];
@@ -370,8 +373,9 @@ function uploadModal(id){
 		option.value = i;
 		vehicles.add(option);
 	}
-	
-	/*
+	*/
+		
+	/* - feltöltés ajax lekérdezésből
     $.ajax({ url: getVehiclesRegnums_Url,
 		 dataType: 'json',
 		 success: function(r){
@@ -387,6 +391,9 @@ function uploadModal(id){
 	
 	//avaiable services
 	
+		//TODO: <option disabled>Please select...</option>
+	
+	/* - feltöltés beégetett tömbből
 	var services = document.getElementById('modal-services');
 	
 	var s = ["műszaki vizsga felkészítés", "olajcsere", "fékbetét csere", "klíma töltés", "karosszéria javítás", "futómű beállítás"];
@@ -397,8 +404,9 @@ function uploadModal(id){
 		option.value = i;
 		services.add(option);
 	}
-
-	/*	
+	*/
+	
+	/* - feltöltés ajax lekérdezésből	
     $.ajax({ url: getAvaiableServices_Url,
 	 dataType: 'json',
 	 success: function(s){
@@ -415,6 +423,10 @@ function uploadModal(id){
 }
 
 function deloadModal(){
+
+	alert(
+		'dátum: ' + document.getElementById('modal-date').value + '\nidő: ' + document.getElementById('modal-time').value + '\njármű: ' + document.getElementById('modal-regnums').options[document.getElementById('modal-regnums').selectedIndex].text + '\nfeladat: ' + document.getElementById('modal-services').options[document.getElementById('modal-services').selectedIndex].text
+	);
 
 	var vehicles = document.getElementById('modal-regnums');
 	

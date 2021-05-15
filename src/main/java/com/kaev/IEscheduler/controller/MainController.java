@@ -9,6 +9,7 @@ import com.kaev.IEscheduler.domain.Event;
 //import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.RequestMapping;
 import com.kaev.IEscheduler.domain.Vehicle;
+import com.kaev.IEscheduler.enums.service_TYPE;
 import com.kaev.IEscheduler.service.UserServiceImpl;
 import com.kaev.IEscheduler.service.VehicleService;
 
@@ -35,8 +36,10 @@ public class MainController {
 	
 	@GetMapping("/scheduler")
 	public String scheduler(Model model){
-		model.addAttribute("event",new Event());
-		return "scheduler";
+		model.addAttribute("event", new Event());
+		model.addAttribute("vehicleList", vehicleService.getVehicles());
+		model.addAttribute("serviceList", service_TYPE.values());
+		return "scheduler";	
 	}
 	
 	@GetMapping("/vehicles")

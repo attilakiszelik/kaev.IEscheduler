@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import com.kaev.IEscheduler.enums.service_TYPE;
 
@@ -21,20 +22,29 @@ public class Event {
 	private Date date;
 	private String time;
 	@ManyToOne
+	private User user;
+	@ManyToOne
 	private Vehicle vehicle;
 	@Enumerated(EnumType.STRING)
 	private service_TYPE service;
 	
+	//transient properties
+	@Transient
+	private transient String selectedRegnum;
+	@Transient
+	private transient String selectedService;
+
 	//constructors
 	public Event() {
 		super();
 
 	}
 	
-	public Event(Date date, String time, Vehicle vehicle, service_TYPE service) {
+	public Event(Date date, String time, User user, Vehicle vehicle, service_TYPE service) {
 		super();
 		this.date = date;
 		this.time = time;
+		this.user = user;
 		this.vehicle = vehicle;
 		this.service = service;
 	}
@@ -63,6 +73,14 @@ public class Event {
 	public void setTime(String time) {
 		this.time = time;
 	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Vehicle getVehicle() {
 		return vehicle;
@@ -79,11 +97,29 @@ public class Event {
 	public void setService(service_TYPE service) {
 		this.service = service;
 	}
+	
+	//transient properties's getters and setters
+	public String getSelectedRegnum() {
+		return selectedRegnum;
+	}
+
+	public void setSelectedRegnum(String selectedRegnum) {
+		this.selectedRegnum = selectedRegnum;
+	}
+	
+	public String getSelectedService() {
+		return selectedService;
+	}
+
+	public void setSelectedService(String selectedService) {
+		this.selectedService = selectedService;
+	}
 
 	//toString
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", date=" + date + ", time=" + time + ", vehicle=" + vehicle + "]";
+		return "Event [id=" + id + ", date=" + date + ", time=" + time + ", user=" + user + ", vehicle=" + vehicle
+				+ ", service=" + service + "]";
 	}
 	
 }

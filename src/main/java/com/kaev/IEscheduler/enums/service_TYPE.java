@@ -11,8 +11,8 @@ public enum service_TYPE {
 	KAROSSZERIAJAVITAS("karosszéria javítás", 5),
 	FUTOMUBEALLITAS("futómű beállítás", 3);
 	
-	private String text;
-	private int hour;
+	public String text;
+	public int hour;
 	
 	private service_TYPE(String text, int hour) {
 		this.text = text;
@@ -26,7 +26,7 @@ public enum service_TYPE {
     public int getHourOfService_TYPE() {
         return hour;
     }
-
+    
     public static service_TYPE of(String text) {
         return Stream.of(service_TYPE.values())
           .filter(p -> p.getTextOfService_TYPE().equals(text))
