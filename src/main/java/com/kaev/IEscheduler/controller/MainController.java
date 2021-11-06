@@ -64,7 +64,7 @@ public class MainController {
 	@RequestMapping("/user/{id}")
 	public String searchUserById(@PathVariable(value="id") String id ) throws Exception{
 
-		//pl. nem adpott meg felhasználót
+		//pl. nem adott meg felhasználót
 		if(id==null) {
 			throw new Exception("Nem adott meg felhasználót!");
 		}

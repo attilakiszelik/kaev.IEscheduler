@@ -30,6 +30,8 @@ public class Event {
 	
 	//transient properties
 	@Transient
+	private transient String userEmail;
+	@Transient
 	private transient String selectedRegnum;
 	@Transient
 	private transient String selectedService;
@@ -99,6 +101,14 @@ public class Event {
 	}
 	
 	//transient properties's getters and setters
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail= userEmail;
+	}
+	
 	public String getSelectedRegnum() {
 		return selectedRegnum;
 	}
