@@ -3,6 +3,7 @@ package com.kaev.IEscheduler.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kaev.IEscheduler.authentication.myAuthenticationFacade;
 import com.kaev.IEscheduler.domain.Vehicle;
 import com.kaev.IEscheduler.service.VehicleService;
 
@@ -19,6 +21,9 @@ import com.kaev.IEscheduler.service.VehicleService;
 public class VehicleController {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+    @Autowired
+    private myAuthenticationFacade authenticationFacade;
 	
 	private VehicleService vehicleService;
 
@@ -29,7 +34,11 @@ public class VehicleController {
 	
 	@PostMapping("/new")
 	public String newSubmit(@ModelAttribute Vehicle vehicle, Model model) {
-		vehicleService.newVehicle(false, vehicle.getRegnum(), vehicle.getMan(), vehicle.getType(), vehicle.getYop(), 1);
+		
+		Authentication authentication = authenticationFacade.getAuthentication();
+        String userEmail = authentication.getName();
+		
+		vehicleService.newVehicle(false, vehicle.getRegnum(), vehicle.getMan(), vehicle.getType(), vehicle.getYop(), userEmail);
 		return "redirect:/vehicles";
 	}
 	

@@ -16,11 +16,11 @@ import com.kaev.IEscheduler.service.EventService;
 public class EventController {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
-
-	private EventService eventService;
 	
     @Autowired
     private myAuthenticationFacade authenticationFacade;
+
+	private EventService eventService;
 	
 	@Autowired	
 	public void setEventService(EventService eventService) {

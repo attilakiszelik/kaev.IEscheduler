@@ -32,9 +32,9 @@ public class VehicleService {
 		
 	}
 	
-	public void newVehicle(boolean deleted, String regnum, String man, vehicle_TYPE type, Integer yop, long userid) {
+	public void newVehicle(boolean deleted, String regnum, String man, vehicle_TYPE type, Integer yop, String userEmail) {
 		
-		User owner =  userRepo.findById(userid);
+		User owner =  userRepo.findByEmail(userEmail);
 				
 		Vehicle vehicle = new Vehicle(deleted, regnum, man, type, yop, owner);
 		vehicleRepo.save(vehicle);
