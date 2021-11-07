@@ -25,10 +25,13 @@ public class VehicleService {
 		this.userRepo = userRepo;
 	}
 
-	public List<Vehicle> getVehicles(){
+	public List<Vehicle> getVehicles(String userEmail){
+		
+		long owner_id =  userRepo.findIDByEmail(userEmail);
 		
 		//return vehicleRepo.findAll();
-		return vehicleRepo.findAllnonDeleted();
+		//return vehicleRepo.findAllNonDeleted();
+		return vehicleRepo.findAllNonDeletedOfUser(owner_id);
 		
 	}
 	
