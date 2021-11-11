@@ -27,11 +27,24 @@ public class VehicleService {
 
 	public List<Vehicle> getVehicles(String userEmail){
 		
-		long owner_id =  userRepo.findIDByEmail(userEmail);
+		Long owner_id = userRepo.findIDByEmail(userEmail);
+		
+		Long role_id = userRepo.findROLE_IDByUSER_ID(owner_id);
 		
 		//return vehicleRepo.findAll();
 		//return vehicleRepo.findAllNonDeleted();
-		return vehicleRepo.findAllNonDeletedOfUser(owner_id);
+		//return vehicleRepo.findAllNonDeletedOfUser(owner_id);
+		
+		if(role_id == 1){
+			
+			return vehicleRepo.findAllNonDeleted();
+			
+		} else {
+			
+			return vehicleRepo.findAllNonDeletedOfUser(owner_id);
+			
+		}
+		
 		
 	}
 	

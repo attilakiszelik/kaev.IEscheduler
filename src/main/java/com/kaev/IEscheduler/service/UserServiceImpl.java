@@ -1,10 +1,8 @@
 package com.kaev.IEscheduler.service;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import com.kaev.IEscheduler.domain.Role;
 import com.kaev.IEscheduler.domain.User;
 import com.kaev.IEscheduler.repository.RoleRepository;
