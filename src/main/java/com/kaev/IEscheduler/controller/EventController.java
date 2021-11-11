@@ -14,6 +14,8 @@ import com.kaev.IEscheduler.service.EventService;
 
 @Controller
 public class EventController {
+	
+	//teszt
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
