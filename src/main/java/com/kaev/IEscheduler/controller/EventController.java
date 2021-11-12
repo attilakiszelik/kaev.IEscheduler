@@ -14,8 +14,6 @@ import com.kaev.IEscheduler.service.EventService;
 
 @Controller
 public class EventController {
-	
-	//teszt
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
@@ -42,7 +40,7 @@ public class EventController {
 		log.debug("rendszám: " + event.getSelectedRegnum());
 		log.debug("feladat: " + event.getSelectedService());
 		
-		eventService.newEvent(event.getDate(), event.getTime(), userEmail, event.getSelectedRegnum(), event.getSelectedService());
+		eventService.newEvent(event.getDate(), event.getTime(), userEmail, event.getSelectedRegnum(), event.getSelectedService(), "required");
 		
 		return "redirect:/scheduler";
 	}

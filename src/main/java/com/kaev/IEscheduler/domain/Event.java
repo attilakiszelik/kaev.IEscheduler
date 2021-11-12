@@ -27,6 +27,7 @@ public class Event {
 	private Vehicle vehicle;
 	@Enumerated(EnumType.STRING)
 	private service_TYPE service;
+	private String status;
 	
 	//transient properties
 	@Transient
@@ -40,13 +41,14 @@ public class Event {
 
 	}
 	
-	public Event(Date date, String time, User user, Vehicle vehicle, service_TYPE service) {
+	public Event(Date date, String time, User user, Vehicle vehicle, service_TYPE service, String status) {
 		super();
 		this.date = date;
 		this.time = time;
 		this.user = user;
 		this.vehicle = vehicle;
 		this.service = service;
+		this.status = status;
 	}
 
 	//getters and setters
@@ -98,6 +100,14 @@ public class Event {
 		this.service = service;
 	}
 	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	//transient properties's getters and setters
 	public String getSelectedRegnum() {
 		return selectedRegnum;
@@ -119,7 +129,7 @@ public class Event {
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", date=" + date + ", time=" + time + ", user=" + user + ", vehicle=" + vehicle
-				+ ", service=" + service + "]";
+				+ ", service=" + service + ", status=" + status + "]";
 	}
 	
 }

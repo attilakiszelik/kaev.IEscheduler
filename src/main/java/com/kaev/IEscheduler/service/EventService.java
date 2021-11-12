@@ -42,13 +42,13 @@ public class EventService {
 		
 	}
 	
-	public void newEvent(Date date, String time, String userEmail, String selected_regnum, String selected_service) {
+	public void newEvent(Date date, String time, String userEmail, String selected_regnum, String selected_service, String status) {
 
 		User user = userRepo.findByEmail(userEmail);
 		Vehicle vehicle =  vehicleRepo.findByRegnum(selected_regnum);
 		service_TYPE service = service_TYPE.of(selected_service);
 
-		Event event = new Event(date, time, user, vehicle, service);
+		Event event = new Event(date, time, user, vehicle, service, status);
 		eventRepo.save(event);
 		
 	}
