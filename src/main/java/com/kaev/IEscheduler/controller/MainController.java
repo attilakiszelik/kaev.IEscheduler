@@ -69,7 +69,8 @@ public class MainController {
 	
 	@GetMapping("/registrations")
 	public String registrations(Model model){
-		model.addAttribute("users", userService.getLockedUsers());
+		model.addAttribute("lockedUsers", userService.getLockedUsers());
+		model.addAttribute("allUsers", userService.getAllUsers());
 		return "registrations";
 	}
 /*	

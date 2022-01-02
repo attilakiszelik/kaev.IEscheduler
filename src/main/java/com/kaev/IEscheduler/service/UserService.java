@@ -7,6 +7,8 @@ import com.kaev.IEscheduler.domain.User;
 public interface UserService {
 	
 	public List<User> getLockedUsers();
+	
+	public List<User> getAllUsers();
 
 	public User findByEmail(String email);
 

@@ -64,11 +64,12 @@ function untoggle(id){
 
 function registrations_onload(){
 
-    var ids = [2];
+    var ids = [1,2,3];
     
-    for (i = 0; i < ids.length; i++) { 
+    for (i = 0; i <= ids.length; i++) { 
     	$( "#acceptUser" + ids[i] + "row" ).toggle();
     	$( "#declineUser" + ids[i] + "row" ).toggle();
+    	$( "#deleteUser" + ids[i] + "row" ).toggle();
 	}
 
 }
@@ -78,6 +79,10 @@ function toggle_acceptRow(id){
 }
 
 function toggle_declineRow(id){
+    $( "#" + id + "row" ).toggle();
+}
+
+function toggle_deleteRow(id){
     $( "#" + id + "row" ).toggle();
 }
 

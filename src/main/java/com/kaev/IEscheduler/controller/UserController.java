@@ -74,5 +74,13 @@ public class UserController {
 		log.debug("felhasználói fiók törölve!");
 		return "redirect:/registrations";
 	}
-	
+/*
+	@PostMapping("/deleteUser/{id}")
+	public String deleteUser(@PathVariable(value="id") String id) {
+		Long userid = Long.parseLong(id);
+		userService.deleteUser(userid);
+		log.debug("felhasználói fiók törölve!");
+		return "redirect:/registrations";
+	}
+*/	
 }
