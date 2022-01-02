@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.kaev.IEscheduler.authentication.myAuthenticationFacade;
@@ -43,6 +44,20 @@ public class EventController {
 		eventService.newEvent(event.getDate(), event.getTime(), userEmail, event.getSelectedRegnum(), event.getSelectedService(), "required");
 		
 		return "redirect:/scheduler";
+	}
+	
+	@PostMapping("/event/accept/{id}")
+	public String acceptEvent(@PathVariable(value="id") String id) {
+		eventService.acceptEvent(id);
+		log.debug("időpontfoglalás jóváhagyva!");
+		return "redirect:/bookings";
+	}
+	
+	@PostMapping("/event/decline/{id}")
+	public String declineEvent(@PathVariable(value="id") String id) {
+		eventService.declineEvent(id);
+		log.debug("időpontfoglalás elutasítva!");
+		return "redirect:/bookings";
 	}
 	
 }

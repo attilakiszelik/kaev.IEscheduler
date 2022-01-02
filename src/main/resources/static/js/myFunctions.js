@@ -86,6 +86,27 @@ function toggle_deleteRow(id){
     $( "#" + id + "row" ).toggle();
 }
 
+//BOOKINGS
+
+function bookings_onload(){
+
+    var ids = [1,2,3];
+    
+    for (i = 0; i <= ids.length; i++) { 
+    	$( "#acceptEvent" + ids[i] + "row" ).toggle();
+    	$( "#declineEvent" + ids[i] + "row" ).toggle();
+	}
+
+}
+
+function toggle_acceptEvent(id){
+	$( "#" + id + "row" ).toggle();
+}
+
+function toggle_declineEvent(id){
+    $( "#" + id + "row" ).toggle();
+}
+
 //SCHEDULER
 
 function scheduler_onload(){

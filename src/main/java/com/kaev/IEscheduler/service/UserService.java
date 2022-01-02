@@ -20,4 +20,6 @@ public interface UserService {
 
 	public String deleteUser(Long id);
 	
+	public Boolean isAdmin(String email);
+	
 }

@@ -36,9 +36,15 @@ public class EventService {
 		this.userRepo = userRepo;
 	}
 	
-	public List<Event> getEvents(){
+	public List<Event> getAllEvents(){
 		
-		return eventRepo.findAll();
+		return eventRepo.findAllApproved();
+		
+	}
+	
+	public List<Event> getTobeapprovedEvents(){
+		
+		return eventRepo.findAllRequested();
 		
 	}
 	
@@ -50,6 +56,26 @@ public class EventService {
 
 		Event event = new Event(date, time, user, vehicle, service, status);
 		eventRepo.save(event);
+		
+	}
+
+	public void acceptEvent(String id) {
+		
+		long eventid = Long.parseLong(id);
+		Event event = eventRepo.findById(eventid);
+		event.setStatus("accepted");
+		eventRepo.save(event);
+		//TODO: email service
+		
+	}
+
+	public void declineEvent(String id) {
+		
+		long eventid = Long.parseLong(id);
+		Event event = eventRepo.findById(eventid);
+		event.setStatus("declined");
+		eventRepo.save(event);
+		//TODO: email service
 		
 	}
 	

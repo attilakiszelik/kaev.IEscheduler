@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="layouts/main">
+
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>időpont-foglalások</title>
+
+</head>
+
+<body onload="bookings_onload()">
+
+	<!-- page content -->
+	<div layout:fragment="content">
+	
+		<div class="bookings-table">
+			<table>
+
+				<tr class="table-title">
+					<th colspan="7">időpont-foglalások jóváhagyása</th>
+				</tr>
+				
+				<tr class="table-header">
+					<th class="col-1">dátum</th>
+					<th class="col-2">időpont</th>
+					<th class="col-3">frsz</th>
+					<th class="col-4">jármű típusa</th>
+					<th class="col-5">művelet</th>
+					<th class="col-6">felhasználó e-mail címe</th>
+					<th class="col-7">jóváhagyás / elutasítás</th>
+				</tr>
+
+				<div th:each="event : ${tobeapprovedEvents}">
+					<tr>
+						
+						<td class="col-1" th:text="${event.date}"></td>
+						<td class="col-2" th:text="${event.time}"></td>
+						<td class="col-3" th:text="${event.vehicle.regnum}"></td>
+						<td class="col-4" th:text="${event.vehicle.type}"></td>
+						<td class="col-5" th:text="${event.service.getTextOfService_TYPE()}"></td>
+						<td class="col-6" th:text="${event.user.email}"></td>
+						<td class="col-7">
+							<div class="button-group">
+								<button class="btn btn-success btn-med" th:id="'acceptEvent' + ${event.id}" onClick="toggle_acceptRow(this.id)"><i class="fas fa-check-square"> jóváhagyás</i></button>
+								<button class="btn btn-danger btn-med" th:id="'declineEvent' + ${event.id}" onClick="toggle_declineRow(this.id)"><i class="fas fa-times-circle"> elutasítás</i></button>
+							</div>
+						</td>
+						
+					</tr>
+					
+					<tr>
+						<td class="collapse-card accept-event" th:id="'acceptEvent' + ${event.id} + 'row'" colspan="3">
+							<div class="card-header">
+								<h6>Biztosan jóváhagyod az időpont foglalást?</h6>
+							</div>
+							<div class="card-body">
+								<form action="#" th:action="@{/event/accept/{id}(id=${event.id})}" th:object="${event}" method="post">
+									<div class="card-button-group">
+										<button type="submit" value="igen" class="btn btn-success btn-med">igen</button>
+										<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+									</div>
+								</form>
+							</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="collapse-card decline-event" th:id="'declineEvent' + ${event.id} + 'row'" colspan="3">
+							<div class="card-header">
+								<h6>Biztosan elutasítod az időpont foglalást?</h6>
+							</div>
+							<div class="card-body">
+								<form action="#" th:action="@{/event/decline/{id}(id=${event.id})}" th:object="${event}" method="post">
+									<div class="card-button-group">
+										<button type="submit" value="igen" class="btn btn-success btn-med">igen</button>
+										<button type="reset" value="mégse" class="btn btn-danger btn-med">mégse</button>
+									</div>
+								</form>
+							</div>
+						</td>
+					</tr>
+						
+				</div>	
+			</table>
+		</div>
+		
+		<br>
+		<br>
+		<br>
+		
+		<div class="bookings-table">
+			<table>
+
+				<tr class="table-title">
+					<th colspan="7">időpont-foglalások</th>
+				</tr>
+				
+				<tr class="table-header">
+					<th class="col-1">dátum</th>
+					<th class="col-2">időpont</th>
+					<th class="col-3">frsz</th>
+					<th class="col-4">jármű típusa</th>
+					<th class="col-5">művelet</th>
+					<th class="col-6">felhasználó e-mail címe</th>
+					<th class="col-7">státusz</th>
+				</tr>
+
+				<div th:each="event : ${allEvents}">
+					<tr>
+						<td class="col-1" th:text="${event.date}"></td>
+						<td class="col-2" th:text="${event.time}"></td>
+						<td class="col-3" th:text="${event.vehicle.regnum}"></td>
+						<td class="col-4" th:text="${event.vehicle.type}"></td>
+						<td class="col-5" th:text="${event.service.getTextOfService_TYPE()}"></td>
+						<td class="col-6" th:text="${event.user.email}"></td>
+						<td class="col-7" th:text="${event.status}"></td>
+					</tr>	
+				</div>	
+			</table>
+		</div>
+		
+	</div>
+	
+</body>
+
+</html>

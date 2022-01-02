@@ -40,7 +40,6 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		return userRepo.findAllLocked();
 	}
 
-
 	@Override
 	public List<User> getAllUsers() {
 		return userRepo.findAll();
@@ -142,6 +141,20 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		emailService.sendDelMessage(user.getName(), user.getEmail());
 		
 		return "userDeleted";
+	}
+
+	@Override
+	public Boolean isAdmin(String userEmail)
+	{
+		Long owner_id = userRepo.findIDByEmail(userEmail);		
+		Long role_id = userRepo.findROLE_IDByUSER_ID(owner_id);
+		
+		if(role_id == 1){	
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 	
 }

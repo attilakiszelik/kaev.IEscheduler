@@ -71,7 +71,7 @@ public class UserController {
 	public String unlockDecline(@PathVariable(value="id") String id) {
 		Long userid = Long.parseLong(id);
 		userService.deleteUser(userid);
-		log.debug("felhasználói fiók törölve!");
+		log.debug("regisztráció elutasítva!");
 		return "redirect:/registrations";
 	}
 /*

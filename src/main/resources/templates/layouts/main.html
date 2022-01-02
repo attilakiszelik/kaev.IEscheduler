@@ -58,16 +58,19 @@
 
 			<ul class="navigation">
 				<li>
-					<a href="/scheduler"><i class="fas fa-calendar-alt"></i> időpontfoglalás</a>
+					<a href="/bookings" sec:authorize="hasAuthority('ADMIN')"><i class="fas fa-calendar-alt"></i> időpontfoglalások</a>
+				</li>
+				<li>
+					<a href="/scheduler" sec:authorize="hasAuthority('USER')"><i class="fas fa-calendar-alt"></i> időpontfoglalás</a>
 				</li>
 				<li>
 					<a href="/vehicles"><i class="fas fa-truck-moving"></i> járművek</a>
 				</li>
 				<li>
-					<a href="/profile"><i class="fas fa-user"></i> profil</a>
+					<a href="/profile" sec:authorize="hasAuthority('USER')"><i class="fas fa-user"></i> profil</a>
 				</li>
 				<li>
-					<a href="/registrations" sec:authorize="hasAuthority('ADMIN')"><i class="fas fa-users"></i> regisztráció-jóváhagyás</a>
+					<a href="/registrations" sec:authorize="hasAuthority('ADMIN')"><i class="fas fa-users"></i> regisztrációk</a>
 				</li>
 				<li>
 					<form sec:authorize="isAuthenticated()" id="formLogout" th:action="@{/logout}" method="post">
