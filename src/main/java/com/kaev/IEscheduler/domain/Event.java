@@ -1,5 +1,6 @@
 package com.kaev.IEscheduler.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -11,10 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kaev.IEscheduler.enums.service_TYPE;
 
 @Entity(name="Events")
-public class Event {
+public class Event implements Serializable{
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -24,6 +26,7 @@ public class Event {
 	@ManyToOne
 	private User user;
 	@ManyToOne
+	@JsonIgnore
 	private Vehicle vehicle;
 	@Enumerated(EnumType.STRING)
 	private service_TYPE service;

@@ -78,5 +78,12 @@ public class EventService {
 		//TODO: email service
 		
 	}
+
+	public List<Event> getMyBookings(String userEmail) {
+		
+		User user = userRepo.findByEmail(userEmail);
+		return eventRepo.findMyBookings(user.getId());
+		
+	}
 	
 }

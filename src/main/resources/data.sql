@@ -14,3 +14,5 @@ INSERT INTO VEHICLES (deleted,regnum,man,type,yop,owner_id) VALUES (false,'ABC-1
 INSERT INTO VEHICLES (deleted,regnum,man,type,yop,owner_id) VALUES (false,'ABC-456','MAN','TGL',2000,2)
 INSERT INTO VEHICLES (deleted,regnum,man,type,yop,owner_id) VALUES (false,'ABC-789','MAN','TGX',2000,2)
 INSERT INTO VEHICLES (deleted,regnum,man,type,yop,owner_id) VALUES (false,'XYZ-000','MAN','eTGM',2000,3)
+
+INSERT INTO EVENTS (date, time, user_id, vehicle_id, service, status) VALUES ('2021-01-05T00:00:00', '11:00', 2, 1, 'FEKBETETCSERE','accepted')

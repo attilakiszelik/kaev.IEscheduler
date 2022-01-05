@@ -65,6 +65,7 @@ public class MainController {
 		model.addAttribute("event", new Event());
 		model.addAttribute("vehicleList", vehicleService.getVehicles(userEmail));
 		model.addAttribute("serviceList", service_TYPE.values());
+        
 		return "scheduler";	
 	}
 	
@@ -75,7 +76,7 @@ public class MainController {
         String userEmail = authentication.getName();
 		
 		model.addAttribute("vehicles", vehicleService.getVehicles(userEmail));
-		model.addAttribute("vehicle",new Vehicle());
+		model.addAttribute("vehicle", new Vehicle());
 		return "vehicles";
 	}
 	

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
 import com.kaev.IEscheduler.domain.Event;
 
 public interface EventRepository extends CrudRepository<Event, Long>{
@@ -21,5 +23,10 @@ public interface EventRepository extends CrudRepository<Event, Long>{
 	List<Event> findAllById(Long id);
 	
 	Event findById(long id);
+
+	@Query(
+	value = "SELECT * FROM EVENTS e WHERE e.USER_ID = :user_id ", 
+	nativeQuery = true)	
+	List<Event> findMyBookings(@Param("user_id") Long id);
 	
 }

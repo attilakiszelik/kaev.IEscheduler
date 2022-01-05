@@ -4,6 +4,7 @@ var opened = 'nothing';
 var getVehiclesIds_Url = 'http://localhost:9000/getVehiclesIds';
 var getVehiclesRegnums_Url = 'http://localhost:9000/getVehiclesRegnums';
 var getAvaiableServices_Url = 'http://localhost:9000/getAvaiableServices';
+var getMyBookings_Url = 'http://localhost:9000/getMyBookings';
 
 //VEHICLES
 
@@ -121,6 +122,8 @@ function scheduler_onload(){
     
     setDays();
     checkDays();
+    
+    setMyBookings();
     
 }
 
@@ -472,5 +475,24 @@ function deloadModal(){
 	for (i = services.length; i > 0; i--) { 
 		services.remove(services.i);
 	}
+
+}
+
+function setMyBookings(){
+
+	$.ajax({ url: getMyBookings_Url,
+	 dataType: 'json',
+	 success: function(answer){
+	 
+	 	alert(JSON.stringify(answer));
+	 	
+	 	var myBookings = JSON.stringify(answer);
+	 	alert(myBookings.length);
+	 
+	    for (i = 0; i < answer.length; i++) { 
+			
+		}
+	 },
+	});
 
 }
