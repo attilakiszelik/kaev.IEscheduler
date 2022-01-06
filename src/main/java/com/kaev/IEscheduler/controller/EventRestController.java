@@ -1,5 +1,7 @@
 package com.kaev.IEscheduler.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,30 +31,30 @@ public class EventRestController {
 	}
 	
 	@GetMapping
-	public Map<Long, Map<String, String>> myBookings(){
+	public List<Map<String, String>> myBookings(){
 		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			
 		Authentication authentication = authenticationFacade.getAuthentication();
         String userEmail = authentication.getName();
 		
         List<Event> myBookings = eventService.getMyBookings(userEmail);
-        
-        Map<Long, Map<String, String>> bookings = new HashMap<>();
+        List<Map<String, String>> bookings = new ArrayList<Map<String, String>>();
         
         for (Event n : myBookings) {
         	
-        	Map<String, String> booking = new HashMap<>();
+        	Map<String, String> booking = new HashMap<>();	
         	
-        	booking.put("date:", n.getDate().toString());
-        	booking.put("time:", n.getTime());
-        	booking.put("regnum:", n.getVehicle().getRegnum());
-        	booking.put("service:", n.getService().getTextOfService_TYPE());
-        	booking.put("status:", n.getStatus());
+        	booking.put("date", simpleDateFormat.format(n.getDate()));
+        	booking.put("time", n.getTime());
+        	booking.put("regnum", n.getVehicle().getRegnum());
+        	booking.put("service", n.getService().getTextOfService_TYPE());
+        	booking.put("status", n.getStatus());
         	
-        	bookings.put(n.getId(), booking);
+        	bookings.add(booking);
         }
         
         return bookings; 
-	
 	}
 	
 }

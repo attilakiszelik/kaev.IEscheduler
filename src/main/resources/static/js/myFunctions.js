@@ -122,7 +122,6 @@ function scheduler_onload(){
     
     setDays();
     checkDays();
-    
     setMyBookings();
     
 }
@@ -133,6 +132,7 @@ function minusOneWeek(){
     document.getElementById('dateselector').value = result.toISOString().slice(0, 10);
     setDays();
     checkDays();
+    setMyBookings();
 }
 
 function plusOneWeek(){
@@ -141,11 +141,13 @@ function plusOneWeek(){
     document.getElementById('dateselector').value = result.toISOString().slice(0, 10);
     setDays();
     checkDays();
+    setMyBookings();
 }
 
 function datechanged(){
 	setDays();
     checkDays();
+    setMyBookings();
 }
 
 function setDays(){
@@ -480,19 +482,68 @@ function deloadModal(){
 
 function setMyBookings(){
 
-	$.ajax({ url: getMyBookings_Url,
+	$.ajax({
+	 method: 'GET',
+	 url: getMyBookings_Url,
 	 dataType: 'json',
-	 success: function(answer){
+	 success: function(response){
 	 
-	 	alert(JSON.stringify(answer));
-	 	
-	 	var myBookings = JSON.stringify(answer);
-	 	alert(myBookings.length);
-	 
-	    for (i = 0; i < answer.length; i++) { 
+	 	//alert(JSON.stringify(response));
+
+		for (var i = 0; i < response.length; i++){	 	
 			
+			//alert(response[i]['date'] + ' ' + response[i]['time'] + ' ' + response[i]['regnum'] + ' ' + response[i]['service'] + ' ' + response[i]['status']);
+			
+			for (var j = 1; j <= 5; j++){
+
+	        	if(document.getElementById("day" + j).innerHTML === response[i]['date']){
+	        	
+	        		//alert("akció...");
+	        		
+	        			var h;
+
+						switch (response[i]['time']) {
+						  case "07:00":
+						    h = 1;
+						    break;
+						  case "08:00":
+						    h = 2;
+						    break;
+						  case "09:00":
+						    h = 3;
+						    break;
+						  case "10:00":
+						    h = 4;
+						    break;
+						  case "11:00":
+						    h = 5;
+						    break;
+						  case "12:00":
+						    h = 6;
+						    break;
+						  case "13:00":
+						    h = 7;
+						    break;
+						  case "14:00":
+						    h = 8;
+						    break;
+						  case "15:00":
+						    h = 9;
+							break;
+						}
+	        		
+	        		var myID = 'd' + j + 't' + h; 
+	        		
+	        		document.getElementById(myID).innerHTML = response[i]['regnum'] + " " + response[i]['service'];
+	        		
+	        	}
+
+	 		}
+	 		
 		}
-	 },
+	 
+	 }
+		 	
 	});
 
 }
